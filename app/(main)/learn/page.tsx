@@ -4,12 +4,34 @@ import { FeedWrapper } from "@/components/FeedWrapper";
 import { StickyWrapper } from "@/components/StickyWrapper";
 import { Navbar } from "./Navbar";
 import { UserProgress } from "@/components/UserProgress";
-import { getUserProgress } from "@/db/queries";
+import {
+  getCourseProgress,
+  getLessonPercentage,
+  getUnits,
+  getUserProgress,
+} from "@/db/queries";
+import { Unit } from "./Unit";
 
 const LearnPage = async () => {
-  const userProgress = await getUserProgress();
+  const userProgressPromise = getUserProgress();
+  const courseProgressPromise = getCourseProgress();
+  const lessonPercentagePromise = getLessonPercentage();
+  const unitsDataPromise = getUnits();
+
+  const [userProgress, courseProgress, lessonPercentage, units] =
+    await Promise.all([
+      userProgressPromise,
+      courseProgressPromise,
+      lessonPercentagePromise,
+      unitsDataPromise,
+    ]);
 
   if (!userProgress || !userProgress.activeCourse) {
+    redirect("/courses");
+  }
+
+
+  if (!courseProgress?.activeLesson) {
     redirect("/courses");
   }
 
@@ -18,6 +40,16 @@ const LearnPage = async () => {
     <div className="flex gap-12 px-6">
       <FeedWrapper>
         <Navbar title={userProgress.activeCourse.title} />
+
+        {units.map((unit) => (
+          <div className="mb-10" key={unit.id}>
+            <Unit
+              {...unit}
+              activeLesson={courseProgress.activeLesson}
+              activeLessonPercentage={lessonPercentage}
+            />
+          </div>
+        ))}
       </FeedWrapper>
       <StickyWrapper>
         <UserProgress
