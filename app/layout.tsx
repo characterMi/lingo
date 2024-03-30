@@ -6,6 +6,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 
 import ExitModal from "@/components/Modals/ExitModal";
+import HeartsModal from "@/components/Modals/HeartsModal";
+import PracticeModal from "@/components/Modals/PracticeModal";
 
 import "./globals.css";
 
@@ -27,6 +29,8 @@ export default function RootLayout({
         <body className={font.className}>
           <Toaster />
           <ExitModal />
+          <HeartsModal />
+          <PracticeModal />
           {children}
         </body>
       </html>

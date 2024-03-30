@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
-import Navbar from "@/app/(marketing)/Navbar";
-import Footer from "@/app/(marketing)/Footer";
+import Navbar from "@/app/(marketing)/components/Navbar";
+import Footer from "@/app/(marketing)/components/Footer";
 
 export const metadata: Metadata = {
   title: "Lingo | Home page",

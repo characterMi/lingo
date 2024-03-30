@@ -8,7 +8,7 @@ import {
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 import Image from "next/image";
-import { Button } from "../../components/ui/button";
+import { Button } from "../../../components/ui/button";
 
 const Navbar = () => {
   return (

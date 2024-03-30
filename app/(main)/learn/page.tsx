@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 
 import { FeedWrapper } from "@/components/FeedWrapper";
 import { StickyWrapper } from "@/components/StickyWrapper";
-import { Navbar } from "./Navbar";
+import { Navbar } from "./components/Navbar";
 import { UserProgress } from "@/components/UserProgress";
 import {
   getCourseProgress,
@@ -10,7 +10,7 @@ import {
   getUnits,
   getUserProgress,
 } from "@/db/queries";
-import { Unit } from "./Unit";
+import { Unit } from "./components/Unit";
 
 const LearnPage = async () => {
   const userProgressPromise = getUserProgress();

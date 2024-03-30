@@ -1,5 +1,5 @@
 import { getCourses, getUserProgress } from "@/db/queries";
-import { CoursesList } from "./CoursesList";
+import { CoursesList } from "./components/CoursesList";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

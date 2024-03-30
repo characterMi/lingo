@@ -13,29 +13,31 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-import { useExitModal } from "@/store/useExitModal";
+import { usePracticeModal } from "@/store/usePracticeModal";
 
-const ExitModal = () => {
+const PracticeModal = () => {
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
-  const { isOpen, close } = useExitModal();
+  const { isOpen, close } = usePracticeModal();
 
   useEffect(() => setIsClient(true), []);
 
   if (!isClient) return null;
+
   return (
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent className="max-w-md">
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
-            <Image src="/mascot_sad.svg" alt="Mascot is sad" width={80} height={80} />
+            <Image src="/heart.svg" alt="Heart" width={100} height={100} />
           </div>
 
           <DialogTitle className="text-center font-bold text-2xl">
-            Wait, don't go !
+            Practice lesson
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-            You're about to leave the lesson. are you sure ?
+            Use practice lessons to regain hearts and points. You cannot loose
+            hearts or points in practice lessons.
           </DialogDescription>
         </DialogHeader>
 
@@ -47,19 +49,7 @@ const ExitModal = () => {
               size="lg"
               onClick={close}
             >
-              Keep learning
-            </Button>
-
-            <Button
-              variant="dangerOutline"
-              className="w-full"
-              size="lg"
-              onClick={() => {
-                close();
-                router.push("/learn");
-              }}
-            >
-              End session
+              I got it
             </Button>
           </div>
         </DialogFooter>
@@ -68,4 +58,4 @@ const ExitModal = () => {
   );
 };
 
-export default ExitModal;
+export default PracticeModal;
