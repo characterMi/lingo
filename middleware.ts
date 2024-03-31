@@ -4,7 +4,7 @@ export default authMiddleware({
   // Routes that can be accessed while signed out
 
   // if we live this array empty, we're gonna redirect to the signIn page
-  publicRoutes: ["/"],
+  publicRoutes: ["/", "/api/webhooks/stripe"],
   // Routes that can always be accessed, and have
   // no authentication information
   //   ignoredRoutes: ["/no-auth-in-this-route"],

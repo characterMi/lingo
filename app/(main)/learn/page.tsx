@@ -9,27 +9,41 @@ import {
   getLessonPercentage,
   getUnits,
   getUserProgress,
+  getUserSubscription,
 } from "@/db/queries";
 import { Unit } from "./components/Unit";
+import { Promo } from "@/components/Promo";
+import { Quests } from "@/components/Quests";
+
+export const metadata = {
+  title: "Lingo | Learning page",
+  description: "Learn, Practice and master new languages with Lingo.",
+};
 
 const LearnPage = async () => {
   const userProgressPromise = getUserProgress();
   const courseProgressPromise = getCourseProgress();
   const lessonPercentagePromise = getLessonPercentage();
   const unitsDataPromise = getUnits();
+  const userSubscriptionPromise = getUserSubscription();
 
-  const [userProgress, courseProgress, lessonPercentage, units] =
-    await Promise.all([
-      userProgressPromise,
-      courseProgressPromise,
-      lessonPercentagePromise,
-      unitsDataPromise,
-    ]);
+  const [
+    userProgress,
+    courseProgress,
+    lessonPercentage,
+    units,
+    userSubscription,
+  ] = await Promise.all([
+    userProgressPromise,
+    courseProgressPromise,
+    lessonPercentagePromise,
+    unitsDataPromise,
+    userSubscriptionPromise,
+  ]);
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
-
 
   if (!courseProgress?.activeLesson) {
     redirect("/courses");
@@ -56,8 +70,12 @@ const LearnPage = async () => {
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
-          hasActiveSubscription={false}
+          hasActiveSubscription={!!userSubscription?.isActive}
         />
+
+        {!userSubscription?.isActive && <Promo />}
+
+        <Quests points={userProgress.points} />
       </StickyWrapper>
     </div>
   );

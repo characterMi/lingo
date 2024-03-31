@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useAudio, useWindowSize, useMount } from "react-use";
 import Confetti from "react-confetti";
 
-import { challengeOptions, challenges } from "@/db/schema";
+import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { upsertChallengeProgress } from "@/actions/challengeProgress";
 import { reduceHearts } from "@/actions/userProgress";
 import { useHeartsModal } from "@/store/useHeartsModal";
@@ -29,7 +29,11 @@ interface QuizProps {
   })[];
   initialHearts: number;
   initialPercentage: number;
-  userSubscription: any;
+  userSubscription:
+    | (typeof userSubscription.$inferSelect & {
+        isActive: boolean;
+      })
+    | null;
 }
 
 export const Quiz: FC<QuizProps> = ({
@@ -195,7 +199,7 @@ export const Quiz: FC<QuizProps> = ({
           <div className="flex items-center gap-x-4 w-full">
             <ResultCard variant="points" value={challenges.length * 10} />
 
-            <ResultCard variant="hearts" value={hearts} />
+            <ResultCard variant="hearts" value={!!userSubscription?.isActive ? "active" : hearts} />
           </div>
         </div>
 
