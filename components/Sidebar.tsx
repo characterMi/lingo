@@ -48,6 +48,24 @@ export const Sidebar = ({ className }: Props) => {
           <UserButton afterSignOutUrl="/" />
         </ClerkLoaded>
       </div>
+
+      <div className="flex flex-col items-center max-[380px]:text-xs text-sm lg:text-xs mb-4 pt-4 border-t-2">
+        <p className="whitespace-nowrap justify-center flex items-center gap-1">
+          Made with
+          <Image
+            src="/heart.svg"
+            alt="Love"
+            height={10}
+            width={10}
+            className="animate-ping inline mx-1"
+          />
+          by <span className="green-text-gradient font-black">Abolfazl taghadosi</span>
+        </p>
+
+        <p className="whitespace-nowrap">
+          &copy; {new Date().getFullYear()}, All rights reserved.
+        </p>
+      </div>
     </aside>
   );
 };

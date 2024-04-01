@@ -35,8 +35,6 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
           if (res.data) {
             window.location.href = res.data;
           }
-
-          toast.success("Subscription was successful");
         })
         .catch(() => toast.error("Subscription failed !"));
     });
