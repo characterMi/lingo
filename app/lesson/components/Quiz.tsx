@@ -57,7 +57,7 @@ export const Quiz: FC<QuizProps> = ({
   const { width, height } = useWindowSize();
 
   const [finishAudio] = useAudio({
-    src: "/finish.wav",
+    src: "/finish.mp3",
     autoPlay: true,
   });
 
@@ -199,7 +199,10 @@ export const Quiz: FC<QuizProps> = ({
           <div className="flex items-center gap-x-4 w-full">
             <ResultCard variant="points" value={challenges.length * 10} />
 
-            <ResultCard variant="hearts" value={!!userSubscription?.isActive ? "active" : hearts} />
+            <ResultCard
+              variant="hearts"
+              value={!!userSubscription?.isActive ? "active" : hearts}
+            />
           </div>
         </div>
 

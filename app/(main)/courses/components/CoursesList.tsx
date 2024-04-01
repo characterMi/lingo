@@ -24,7 +24,9 @@ export const CoursesList = ({ activeCourseId, courses }: Props) => {
     }
 
     startTransition(() => {
-      upsertUserProgress(id).catch(() => toast.error("Something went wrong !"));
+      upsertUserProgress(id).catch(() =>
+        toast.error("Could not choose the language. something went wrong.")
+      );
     });
   };
 

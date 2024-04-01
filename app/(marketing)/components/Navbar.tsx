@@ -30,7 +30,6 @@ const Navbar = () => {
             <UserButton afterSignOutUrl="/" />
           </SignedIn>
 
-
           <SignedOut>
             <SignInButton
               mode="modal"

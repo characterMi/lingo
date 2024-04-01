@@ -50,7 +50,6 @@ const LearnPage = async () => {
   }
 
   return (
-    // add flex-row-reerse
     <div className="flex gap-12 px-6">
       <FeedWrapper>
         <Navbar title={userProgress.activeCourse.title} />
