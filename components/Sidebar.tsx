@@ -6,6 +6,7 @@ import { SidebarItem } from "./SidebarItem";
 import { sidebarItems } from "@/constants";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
+import { isAdmin } from "@/lib/admin";
 
 type Props = {
   className?: string;
@@ -37,6 +38,8 @@ export const Sidebar = ({ className }: Props) => {
             key={item.label}
           />
         ))}
+
+        {isAdmin() && <SidebarItem label="Admin" href="/admin" iconSrc="/mascot.svg" />}
       </div>
 
       <div className="p-4">

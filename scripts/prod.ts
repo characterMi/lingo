@@ -3,6 +3,7 @@ import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 
 import * as schema from "../db/schema";
+import { dataToInsert } from "@/constants";
 
 const sql = neon(process.env.DB_URL!);
 
@@ -26,7 +27,7 @@ const db = drizzle(sql, { schema });
     // Insert courses
     const courses = await db
       .insert(schema.courses)
-      .values([{ title: "Spanish", imgSrc: "/es.svg" }])
+      .values(dataToInsert.languages)
       .returning();
 
     // For each course, insert units
@@ -121,205 +122,1040 @@ const db = drizzle(sql, { schema });
           // For each challenge, insert challenge options
           for (const challenge of challenges) {
             if (challenge.order === 1) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el hombre",
-                  imgSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imgSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imgSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "el hombre",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/es_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la mujer",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/es_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el chico",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/es_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "その男",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/jp_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その女",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/jp_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "男の子",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/jp_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "l'homme",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/fr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la femme",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/fr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le garçon",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/fr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "čovjek",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/hr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "žena",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/hr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "dječak",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/hr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "l'uomo",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/it_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la donna",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/it_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "il ragazzo",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/it_boy.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 2) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "la mujer",
-                  imgSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imgSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imgSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "la mujer",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/es_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el chico",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/es_boy.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el hombre",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/es_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "その女",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/jp_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "男の子",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/jp_boy.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その男",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/jp_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "la femme",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/fr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le garçon",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/fr_boy.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'homme",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/fr_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "žena",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/hr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "dječak",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/hr_boy.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "čovjek",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/hr_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "la donna",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/it_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "il ragazzo",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/it_boy.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'uomo",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/it_man.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 3) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imgSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imgSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el chico",
-                  imgSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la mujer",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/es_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el hombre",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/es_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "el chico",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/es_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その女",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/jp_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その男",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/jp_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "男の子",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/jp_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la femme",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/fr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'homme",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/fr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "le garçon",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/fr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "žena",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/hr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "čovjek",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/hr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "dječak",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/hr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la donna",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/it_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'uomo",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/it_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "il ragazzo",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/it_boy.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 4) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el hombre",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la mujer",
+                      audioSrc: "/es_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "el hombre",
+                      audioSrc: "/es_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el chico",
+                      audioSrc: "/es_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その女",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/jp_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "その男",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/jp_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "男の子",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/jp_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la femme",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/fr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "l'homme",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/fr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le garçon",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/fr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "žena",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/hr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "čovjek",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/hr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "dječak",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/hr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la donna",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/it_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "l'uomo",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/it_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "il ragazzo",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/it_boy.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 5) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imgSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imgSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el zombie",
-                  imgSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el hombre",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/es_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la mujer",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/es_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "el zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/es_zombie.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その男",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/jp_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その女",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/jp_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "ゾンビ",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/jp_zombie.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'homme",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/fr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la femme",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/fr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "le zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/fr_zombie.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "čovjek",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/hr_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "žena",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/hr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "zombi",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/hr_zombie.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'uomo",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/it_man.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la donna",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/it_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "lo zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/it_zombie.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 6) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el robot",
-                  imgSrc: "/robot.svg",
-                  audioSrc: "/es_robot.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el zombie",
-                  imgSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imgSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "el robot",
+                      imgSrc: "/robot.svg",
+                      audioSrc: "/es_robot.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/es_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el chico",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/es_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "ロボット",
+                      imgSrc: "/robot.svg",
+                      audioSrc: "/jp_robot.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "ゾンビ",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/jp_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "男の子",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/jp_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "le robot",
+                      imgSrc: "/robot.svg",
+                      audioSrc: "/fr_robot.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/fr_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le garçon",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/fr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "robot",
+                      imgSrc: "/robot.svg",
+                      audioSrc: "/hr_robot.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "zombi",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/hr_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "dječak",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/hr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "Il robot",
+                      imgSrc: "/robot.svg",
+                      audioSrc: "/it_robot.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "lo zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/it_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "il ragazzo",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/it_boy.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 7) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "la nina",
-                  imgSrc: "/girl.svg",
-                  audioSrc: "/es_girl.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el zombie",
-                  imgSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imgSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "la nina",
+                      imgSrc: "/girl.svg",
+                      audioSrc: "/es_girl.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/es_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el hombre",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/es_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "女の子",
+                      imgSrc: "/girl.svg",
+                      audioSrc: "/jp_girl.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "ゾンビ",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/jp_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その男",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/jp_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "la fille",
+                      imgSrc: "/girl.svg",
+                      audioSrc: "/fr_girl.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/fr_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'homme",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/fr_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "djevojka",
+                      imgSrc: "/girl.svg",
+                      audioSrc: "/hr_girl.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "zombi",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/hr_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "čovjek",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/hr_man.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "la ragazza",
+                      imgSrc: "/girl.svg",
+                      audioSrc: "/it_girl.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "lo zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/it_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "l'uomo",
+                      imgSrc: "/man.svg",
+                      audioSrc: "/it_man.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
 
             if (challenge.order === 8) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el zombie",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
+              switch (course.title) {
+                case "Spanish":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la mujer",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/es_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "el zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/es_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "el chico",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/es_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Japanese":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "その女",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/jp_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "ゾンビ",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/jp_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "男の子",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/jp_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "French":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la femme",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/fr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "le zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/fr_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "le garçon",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/fr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Croatian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "žena",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/hr_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "zombi",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/hr_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "dječak",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/hr_boy.mp3",
+                    },
+                  ]);
+                  break;
+                case "Italian":
+                  await db.insert(schema.challengeOptions).values([
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "la donna",
+                      imgSrc: "/woman.svg",
+                      audioSrc: "/it_woman.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: true,
+                      text: "lo zombie",
+                      imgSrc: "/zombie.svg",
+                      audioSrc: "/it_zombie.mp3",
+                    },
+                    {
+                      challengeId: challenge.id,
+                      correct: false,
+                      text: "il ragazzo",
+                      imgSrc: "/boy.svg",
+                      audioSrc: "/it_boy.mp3",
+                    },
+                  ]);
+                  break;
+              }
             }
           }
         }

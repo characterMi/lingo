@@ -70,27 +70,22 @@ export const quests = [
 export const dataToInsert = {
   languages: [
     {
-      id: 1,
       title: "Spanish",
       imgSrc: "/es.svg",
     },
     {
-      id: 2,
       title: "Japanese",
       imgSrc: "/jp.svg",
     },
     {
-      id: 3,
       title: "French",
       imgSrc: "/fr.svg",
     },
     {
-      id: 4,
       title: "Croatian",
       imgSrc: "/hr.svg",
     },
     {
-      id: 5,
       title: "Italian",
       imgSrc: "/it.svg",
     },
