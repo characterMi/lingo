@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
@@ -18,13 +18,27 @@ export const metadata: Metadata = {
   description: "Learn, Practice and master new languages with Lingo.",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#22c55e",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#16a34a",
+        },
+      }}
+    >
       <html lang="en">
         <body className={font.className}>
           <Toaster />
