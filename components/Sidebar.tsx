@@ -50,7 +50,7 @@ export const Sidebar = ({ className }: Props) => {
         </ClerkLoading>
 
         <ClerkLoaded>
-          <UserButton afterSignOutUrl="/" showName />
+          <UserButton afterSignOutUrl="/" />
         </ClerkLoaded>
       </div>
 

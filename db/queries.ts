@@ -1,10 +1,9 @@
+import { auth } from "@clerk/nextjs";
+import { eq } from "drizzle-orm";
 import { cache } from "react";
 import db from "./drizzle";
-import { eq } from "drizzle-orm";
-import { auth } from "@clerk/nextjs";
 import {
   challengeProgress,
-  challenges,
   courses,
   lessons,
   units,
@@ -240,10 +239,6 @@ export const getUserSubscription = cache(async () => {
 });
 
 export const getTopTenUsers = cache(async () => {
-  const { userId } = await auth();
-
-  if (!userId) return [];
-
   const data = await db.query.userProgress.findMany({
     orderBy: (userProgress, { desc }) => [desc(userProgress.points)],
     limit: 10,

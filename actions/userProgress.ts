@@ -14,7 +14,7 @@ import { auth, currentUser } from "@clerk/nextjs";
 import { and, eq } from "drizzle-orm";
 
 export const upsertUserProgress = async (courseId: number) => {
-  const { userId } = await auth();
+  const { userId } = auth();
 
   const user = await currentUser();
 
