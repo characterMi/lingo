@@ -72,14 +72,15 @@ const LeaderBoardPage = async () => {
 
               <p className="font-bold text-neutral-800 flex-1 flex gap-x-1 items-center">
                 {userProgress.userName}
-                {userSubscription?.isActive && (
-                  <Image
-                    src="/blue-tick.png"
-                    alt="Approval"
-                    width={16}
-                    height={16}
-                  />
-                )}
+                {userSubscription?.userId === userProgress.userId &&
+                  userSubscription?.isActive && (
+                    <Image
+                      src="/blue-tick.png"
+                      alt="Approval"
+                      width={16}
+                      height={16}
+                    />
+                  )}
               </p>
 
               <p className="text-muted-foreground">{userProgress.points} XP</p>
