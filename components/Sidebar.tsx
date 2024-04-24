@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
-import { SidebarItem } from "./SidebarItem";
 import { sidebarItems } from "@/constants";
+import { isAdmin } from "@/lib/admin";
+import { cn } from "@/lib/utils";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
-import { isAdmin } from "@/lib/admin";
+import { SidebarItem } from "./SidebarItem";
 
 type Props = {
   className?: string;
@@ -39,7 +39,9 @@ export const Sidebar = ({ className }: Props) => {
           />
         ))}
 
-        {isAdmin() && <SidebarItem label="Admin" href="/admin" iconSrc="/mascot.svg" />}
+        {isAdmin() && (
+          <SidebarItem label="Admin" href="/admin" iconSrc="/mascot.svg" />
+        )}
       </div>
 
       <div className="p-4">
@@ -48,7 +50,7 @@ export const Sidebar = ({ className }: Props) => {
         </ClerkLoading>
 
         <ClerkLoaded>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton afterSignOutUrl="/" showName />
         </ClerkLoaded>
       </div>
 
@@ -62,7 +64,10 @@ export const Sidebar = ({ className }: Props) => {
             width={10}
             className="animate-ping inline mx-1"
           />
-          by <span className="green-text-gradient font-black">Abolfazl taghadosi</span>
+          by{" "}
+          <span className="green-text-gradient font-black">
+            Abolfazl taghadosi
+          </span>
         </p>
 
         <p className="whitespace-nowrap">

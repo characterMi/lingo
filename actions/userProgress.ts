@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { auth, currentUser } from "@clerk/nextjs";
 import db from "@/db/drizzle";
 import {
   getCourseById,
@@ -11,6 +10,7 @@ import {
   getUserSubscription,
 } from "@/db/queries";
 import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { auth, currentUser } from "@clerk/nextjs";
 import { and, eq } from "drizzle-orm";
 
 export const upsertUserProgress = async (courseId: number) => {
@@ -37,7 +37,7 @@ export const upsertUserProgress = async (courseId: number) => {
   if (existingUserProgress) {
     await db.update(userProgress).set({
       activeCourseId: courseId,
-      userName: user.firstName || "User",
+      userName: user.username || "User",
       userImgSrc: user.imageUrl || "/mascot.svg",
     });
 

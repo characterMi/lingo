@@ -1,24 +1,24 @@
 "use client";
 
-import { FC, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FC, useState, useTransition } from "react";
 
-import { useAudio, useWindowSize, useMount } from "react-use";
 import Confetti from "react-confetti";
+import { useAudio, useMount, useWindowSize } from "react-use";
 
-import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { upsertChallengeProgress } from "@/actions/challengeProgress";
 import { reduceHearts } from "@/actions/userProgress";
+import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { useHeartsModal } from "@/store/useHeartsModal";
 import { usePracticeModal } from "@/store/usePracticeModal";
 
 import { toast } from "sonner";
 
-import { Header } from "./Header";
-import { QuestionBubble } from "./QuestionBubble";
 import { Challenge } from "./Challenge";
 import { Footer } from "./Footer";
+import { Header } from "./Header";
+import { QuestionBubble } from "./QuestionBubble";
 import ResultCard from "./ResultCard";
 
 interface QuizProps {
@@ -226,7 +226,7 @@ export const Quiz: FC<QuizProps> = ({
         hasActiveSubscription={!!userSubscription?.isActive}
       />
 
-      <div className="flex-1">
+      <div className="flex-1 mt-8">
         <div className="h-full flex items-center justify-center">
           <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
             <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">

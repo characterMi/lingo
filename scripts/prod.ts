@@ -1,9 +1,9 @@
+import { neon } from "@neondatabase/serverless";
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/neon-http";
-import { neon } from "@neondatabase/serverless";
 
-import * as schema from "../db/schema";
 import { dataToInsert } from "@/constants";
+import * as schema from "../db/schema";
 
 const sql = neon(process.env.DB_URL!);
 
@@ -519,18 +519,21 @@ const db = drizzle(sql, { schema });
                       challengeId: challenge.id,
                       correct: false,
                       text: "la mujer",
+                      imgSrc: "/woman.svg",
                       audioSrc: "/es_woman.mp3",
                     },
                     {
                       challengeId: challenge.id,
                       correct: true,
                       text: "el hombre",
+                      imgSrc: "/man.svg",
                       audioSrc: "/es_man.mp3",
                     },
                     {
                       challengeId: challenge.id,
                       correct: false,
                       text: "el chico",
+                      imgSrc: "/boy.svg",
                       audioSrc: "/es_boy.mp3",
                     },
                   ]);

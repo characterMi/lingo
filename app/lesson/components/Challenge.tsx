@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { challengeOptions, challenges } from "@/db/schema";
 import { cn } from "@/lib/utils";
+import { FC } from "react";
 import Card from "./Card";
 
 interface ChallengeProps {

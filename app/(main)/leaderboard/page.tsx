@@ -1,18 +1,18 @@
-import { redirect } from "next/navigation";
-import Image from "next/image";
 import {
   getTopTenUsers,
   getUserProgress,
   getUserSubscription,
 } from "@/db/queries";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
-import { StickyWrapper } from "@/components/StickyWrapper";
-import { UserProgress } from "@/components/UserProgress";
 import { FeedWrapper } from "@/components/FeedWrapper";
-import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Promo } from "@/components/Promo";
 import { Quests } from "@/components/Quests";
+import { StickyWrapper } from "@/components/StickyWrapper";
+import { UserProgress } from "@/components/UserProgress";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Lingo | Leaderboard page",
@@ -70,8 +70,16 @@ const LeaderBoardPage = async () => {
                 />
               </Avatar>
 
-              <p className="font-bold text-neutral-800 flex-1">
+              <p className="font-bold text-neutral-800 flex-1 flex gap-x-1 items-center">
                 {userProgress.userName}
+                {userSubscription?.isActive && (
+                  <Image
+                    src="/blue-tick.png"
+                    alt="Approval"
+                    width={16}
+                    height={16}
+                  />
+                )}
               </p>
 
               <p className="text-muted-foreground">{userProgress.points} XP</p>
