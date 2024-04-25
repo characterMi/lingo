@@ -1,4 +1,5 @@
 import {
+  getAllSubscribedUser,
   getTopTenUsers,
   getUserProgress,
   getUserSubscription,
@@ -23,12 +24,15 @@ const LeaderBoardPage = async () => {
   const userProgressPromise = getUserProgress();
   const userSubscriptionPromise = getUserSubscription();
   const leaderboardPromise = getTopTenUsers();
+  const allSubscribedUserPromise = getAllSubscribedUser();
 
-  const [userProgress, userSubscription, leaderboard] = await Promise.all([
-    userProgressPromise,
-    userSubscriptionPromise,
-    leaderboardPromise,
-  ]);
+  const [userProgress, userSubscription, leaderboard, allSubscribedUser] =
+    await Promise.all([
+      userProgressPromise,
+      userSubscriptionPromise,
+      leaderboardPromise,
+      allSubscribedUserPromise,
+    ]);
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
@@ -55,25 +59,29 @@ const LeaderBoardPage = async () => {
 
           <Separator className="mb-4 h-0.5 rounded-full" />
 
-          {leaderboard.map((userProgress, i) => (
-            <div
-              key={userProgress.userId}
-              className="flex items-center w-full p-2 px-4 rounded-xl hover:bg-gray-200/50"
-            >
-              <p className="font-bold text-lime-700 mr-4">{i + 1}</p>
+          {leaderboard.map((userProgress, i) => {
+            const subscribedUser = allSubscribedUser?.find(
+              (userId) => userId === userProgress.userId
+            );
 
-              <Avatar className="border bg-green-500 h-12 w-12 ml-3 mr-6">
-                <AvatarImage
-                  alt={userProgress.userName}
-                  className="object-cover"
-                  src={userProgress.userImgSrc}
-                />
-              </Avatar>
+            return (
+              <div
+                key={userProgress.userId}
+                className="flex items-center w-full p-2 px-4 rounded-xl hover:bg-gray-200/50"
+              >
+                <p className="font-bold text-lime-700 mr-4">{i + 1}</p>
 
-              <p className="font-bold text-neutral-800 flex-1 flex gap-x-1 items-center">
-                {userProgress.userName}
-                {userSubscription?.userId === userProgress.userId &&
-                  userSubscription?.isActive && (
+                <Avatar className="border bg-green-500 h-12 w-12 ml-3 mr-6">
+                  <AvatarImage
+                    alt={userProgress.userName}
+                    className="object-cover"
+                    src={userProgress.userImgSrc}
+                  />
+                </Avatar>
+
+                <p className="font-bold text-neutral-800 flex-1 flex gap-x-1 items-center">
+                  {userProgress.userName}
+                  {subscribedUser && (
                     <Image
                       src="/blue-tick.png"
                       alt="Approval"
@@ -81,11 +89,14 @@ const LeaderBoardPage = async () => {
                       height={16}
                     />
                   )}
-              </p>
+                </p>
 
-              <p className="text-muted-foreground">{userProgress.points} XP</p>
-            </div>
-          ))}
+                <p className="text-muted-foreground">
+                  {userProgress.points} XP
+                </p>
+              </div>
+            );
+          })}
         </div>
       </FeedWrapper>
       <StickyWrapper>

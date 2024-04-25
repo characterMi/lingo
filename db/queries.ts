@@ -16,7 +16,7 @@ export const getCourses = cache(async () => {
 });
 
 export const getUserProgress = cache(async () => {
-  const { userId } = await auth();
+  const { userId } = auth();
 
   if (!userId) {
     return null;
@@ -49,7 +49,7 @@ export const getCourseById = cache(async (courseId: number) => {
 });
 
 export const getUnits = cache(async () => {
-  const { userId } = await auth();
+  const { userId } = auth();
   const userProgress = await getUserProgress();
 
   if (!userId || !userProgress?.activeCourseId) {
@@ -99,7 +99,7 @@ export const getUnits = cache(async () => {
 });
 
 export const getCourseProgress = cache(async () => {
-  const { userId } = await auth();
+  const { userId } = auth();
   const userProgress = await getUserProgress();
 
   if (!userId || !userProgress?.activeCourseId) {
@@ -147,7 +147,7 @@ export const getCourseProgress = cache(async () => {
 });
 
 export const getLesson = cache(async (id?: number) => {
-  const { userId } = await auth();
+  const { userId } = auth();
 
   if (!userId) {
     return null;
@@ -217,8 +217,9 @@ export const getLessonPercentage = cache(async () => {
 });
 
 const DAY_IN_MS = 86_400_000;
+
 export const getUserSubscription = cache(async () => {
-  const { userId } = await auth();
+  const { userId } = auth();
 
   if (!userId) return null;
 
@@ -236,6 +237,21 @@ export const getUserSubscription = cache(async () => {
     ...data,
     isActive: !!isActive,
   };
+});
+
+export const getAllSubscribedUser = cache(async () => {
+  const data = await db.query.userSubscription.findMany({
+    limit: 10,
+    columns: {
+      userId: true,
+    },
+  });
+
+  if (!data) return null;
+
+  const subscribedUser = data.map((user) => user.userId);
+
+  return subscribedUser;
 });
 
 export const getTopTenUsers = cache(async () => {
