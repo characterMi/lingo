@@ -48,6 +48,9 @@
         <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/nextjs-original.svg" width="46" height="46" alt="Next.js" />
     </li>
     <li>
+        <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/postgres.svg" width="46" height="46" alt="Postgres" />
+    </li>
+    <li>
         <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/drizzle-icon.png" width="46" height="46" alt="Drizzle ORM" />
     </li>
     <li>
