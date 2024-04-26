@@ -1,13 +1,19 @@
-import { redirect } from "next/navigation";
-import Image from "next/image";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
+import { FeedWrapper } from "@/components/FeedWrapper";
+import { Promo } from "@/components/Promo";
+import { Quests } from "@/components/Quests";
 import { StickyWrapper } from "@/components/StickyWrapper";
 import { UserProgress } from "@/components/UserProgress";
-import { FeedWrapper } from "@/components/FeedWrapper";
-import { Quests } from "@/components/Quests";
-import { Promo } from "@/components/Promo";
+import dynamic from "next/dynamic";
 import Items from "./components/Items";
+
+const SubscriptionNote = dynamic(
+  () => import("./components/SubscriptionNote"),
+  { ssr: false }
+);
 
 export const metadata = {
   title: "Lingo | Shopping page",
@@ -48,6 +54,8 @@ const ShopPage = async () => {
             hasActiveSubscription={!!userSubscription?.isActive}
           />
         </div>
+
+        <SubscriptionNote />
       </FeedWrapper>
       <StickyWrapper>
         <UserProgress
