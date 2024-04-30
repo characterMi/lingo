@@ -30,6 +30,7 @@ export default function manifest(): Manifest {
         src: "/lingo_first.png",
         sizes: "800x500",
         type: "image/png",
+        // @ts-ignore
         form_factor: "wide",
       },
       {
