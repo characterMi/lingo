@@ -13,7 +13,7 @@
 <img src="./preview_images/lingo_third.png" alt="third" />
 <img src="./preview_images/lingo_fourth.png" alt="fourth" />
 <img src="./preview_images/lingo_fifth.png" alt="fifth" />
-<img src="./preview_images/lingo_sixth.png" alt="sixth" />
+<img src="./preview_images/lingo_sixthh.png" alt="sixth" />
 <img src="./preview_images/lingo_seventh.png" alt="seventh" />
 <img src="./preview_images/lingo_eighth.png" alt="eighth" />
 <img src="./preview_images/lingo_ninth.png" alt="ninth" />
@@ -54,6 +54,9 @@
         <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/drizzle-icon.png" width="46" height="46" alt="Drizzle ORM" />
     </li>
     <li>
-        <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/stripe-icon.png" width="100" height="46" alt="Stripe" />
+        <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/stripe-icon.png" width="80" height="30" alt="Stripe" />
+    </li>
+    <li>
+        <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/pwa.png" width="46" height="16" alt="PWA" />
     </li>
 </ul>
