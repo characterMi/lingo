@@ -20,6 +20,7 @@ const Footer = () => {
               height={32}
               width={40}
               className="rounded-md mr-4 shadow-[0_0_5px_#999999]"
+              priority
             />
             {flag.label}
           </Button>

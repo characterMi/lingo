@@ -16,6 +16,10 @@ const font = Nunito({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Lingo",
   description: "Learn, Practice and master new languages with Lingo.",
+  icons: {
+    apple: "/mascot-192.png",
+    icon: "/mascot-192.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -25,6 +29,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   colorScheme: "only light",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

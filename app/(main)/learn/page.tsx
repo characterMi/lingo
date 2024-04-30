@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 
 import { FeedWrapper } from "@/components/FeedWrapper";
+import { Promo } from "@/components/Promo";
+import { Quests } from "@/components/Quests";
 import { StickyWrapper } from "@/components/StickyWrapper";
-import { Navbar } from "./components/Navbar";
 import { UserProgress } from "@/components/UserProgress";
 import {
   getCourseProgress,
@@ -11,9 +12,8 @@ import {
   getUserProgress,
   getUserSubscription,
 } from "@/db/queries";
+import { Navbar } from "./components/Navbar";
 import { Unit } from "./components/Unit";
-import { Promo } from "@/components/Promo";
-import { Quests } from "@/components/Quests";
 
 export const metadata = {
   title: "Lingo | Learning page",
@@ -41,13 +41,12 @@ const LearnPage = async () => {
     userSubscriptionPromise,
   ]);
 
-  if (!userProgress || !userProgress.activeCourse) {
+  if (
+    !userProgress ||
+    !userProgress.activeCourse ||
+    !courseProgress?.activeLesson
+  )
     redirect("/courses");
-  }
-
-  if (!courseProgress?.activeLesson) {
-    redirect("/courses");
-  }
 
   return (
     <div className="flex gap-12 px-6">

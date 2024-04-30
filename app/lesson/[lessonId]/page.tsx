@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
 import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
+import { notFound, redirect } from "next/navigation";
 import { Quiz } from "../components/Quiz";
 
 const PracticePage = async ({
@@ -17,9 +17,9 @@ const PracticePage = async ({
     userSubscriptionPromise,
   ]);
 
-  if (!lesson || !userProgress) {
-    redirect("/learn");
-  }
+  if (!lesson) notFound();
+
+  if (!userProgress) redirect("/learn");
 
   const initialPercentage =
     (lesson.challenges.filter((challenge) => challenge.completed).length /

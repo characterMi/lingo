@@ -1,12 +1,11 @@
 import { Metadata } from "next";
 
-import Navbar from "@/app/(marketing)/components/Navbar";
 import Footer from "@/app/(marketing)/components/Footer";
+import Navbar from "@/app/(marketing)/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Lingo | Home page",
-  description:
-    'Create Your account and start learning new languages with "Lingo"',
+  description: "Learn, Practice and master new languages with Lingo.",
 };
 
 const MarketingLayout = ({ children }: { children: React.ReactNode }) => {

@@ -1,14 +1,14 @@
 "use client";
 
-import { FC } from "react";
 import Link from "next/link";
+import { FC } from "react";
 
 import { Check, Crown, Star } from "lucide-react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
-import "react-circular-progressbar/dist/styles.css";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import "react-circular-progressbar/dist/styles.css";
 
 interface LessonButtonProps {
   id: number;

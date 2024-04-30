@@ -2,9 +2,9 @@
 
 import { usePathname } from "next/navigation";
 
-import { Button } from "./ui/button";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 type Props = {
   label: string;
@@ -29,6 +29,7 @@ export const SidebarItem = ({ href, iconSrc, label }: Props) => {
           className="mr-5"
           width={52}
           height={52}
+          priority
         />
         {label}
       </Link>

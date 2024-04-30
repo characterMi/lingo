@@ -6,6 +6,7 @@ import { isAdmin } from "@/lib/admin";
 import { cn } from "@/lib/utils";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
+import DownloadAppButton from "./DownloadAppButton";
 import { SidebarItem } from "./SidebarItem";
 
 type Props = {
@@ -22,7 +23,13 @@ export const Sidebar = ({ className }: Props) => {
     >
       <Link href="/learn">
         <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
-          <Image src="/mascot.svg" alt="Mascot" width={40} height={40} />
+          <Image
+            src="/mascot.svg"
+            priority
+            alt="Mascot"
+            width={40}
+            height={40}
+          />
           <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">
             Lingo
           </h1>
@@ -44,13 +51,15 @@ export const Sidebar = ({ className }: Props) => {
         )}
       </div>
 
-      <div className="p-4">
+      <div className="py-4 px-2 flex justify-between items-center">
         <ClerkLoading>
           <Loader className="w-5 h-5 text-muted-foreground animate-spin" />
         </ClerkLoading>
 
         <ClerkLoaded>
           <UserButton afterSignOutUrl="/" />
+
+          <DownloadAppButton />
         </ClerkLoaded>
       </div>
 

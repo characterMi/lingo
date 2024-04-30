@@ -12,7 +12,11 @@ import {
 } from "./schema";
 
 export const getCourses = cache(async () => {
-  return await db.query.courses.findMany();
+  const courses = await db.query.courses.findMany();
+
+  if (!courses) return [];
+
+  return courses;
 });
 
 export const getUserProgress = cache(async () => {

@@ -1,13 +1,13 @@
-import { redirect } from "next/navigation";
-import Image from "next/image";
 import { getUserProgress, getUserSubscription } from "@/db/queries";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
-import { quests } from "@/constants";
+import { FeedWrapper } from "@/components/FeedWrapper";
+import { Promo } from "@/components/Promo";
 import { StickyWrapper } from "@/components/StickyWrapper";
 import { UserProgress } from "@/components/UserProgress";
-import { FeedWrapper } from "@/components/FeedWrapper";
 import { Progress } from "@/components/ui/progress";
-import { Promo } from "@/components/Promo";
+import { quests } from "@/constants";
 
 export const metadata = {
   title: "Lingo | Quests page",
@@ -23,9 +23,7 @@ const QuestsPage = async () => {
     userSubscriptionPromise,
   ]);
 
-  if (!userProgress || !userProgress.activeCourse) {
-    redirect("/courses");
-  }
+  if (!userProgress || !userProgress.activeCourse) redirect("/courses");
 
   return (
     <main className="flex gap-12 px-6">
