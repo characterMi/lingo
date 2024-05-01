@@ -1,8 +1,8 @@
 import { FC } from "react";
 
 import { lessons, units } from "@/db/schema";
-import { UnitBanner } from "./UnitBanner";
 import { LessonButton } from "./LessonButton";
+import { UnitBanner } from "./UnitBanner";
 
 interface UnitsProps {
   id: number;
@@ -24,9 +24,7 @@ export const Unit: FC<UnitsProps> = ({
   activeLesson,
   activeLessonPercentage,
   description,
-  id,
   lessons,
-  order,
   title,
 }) => {
   return (

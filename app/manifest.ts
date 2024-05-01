@@ -6,7 +6,7 @@ export default function manifest(): Manifest {
     short_name: "Lingo",
     description: "Lingo is an Advanced language learning application.",
     start_url: ".",
-    orientation: "any",
+    orientation: "portrait",
     theme_color: "#22c55e",
     display: "standalone",
     scope: ".",

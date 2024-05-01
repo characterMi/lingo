@@ -32,12 +32,22 @@ export const LessonButton: FC<LessonButtonProps> = ({
 
   let indentationLevel;
 
-  if (cycleIndex <= 2) {
+  if (cycleIndex <= 0) {
     indentationLevel = cycleIndex;
+  } else if (cycleIndex <= 1) {
+    indentationLevel = 1.8 - cycleIndex;
+  } else if (cycleIndex <= 2) {
+    indentationLevel = 3.2 - cycleIndex;
+  } else if (cycleIndex <= 3) {
+    indentationLevel = 3.8 - cycleIndex;
   } else if (cycleIndex <= 4) {
     indentationLevel = 4 - cycleIndex;
+  } else if (cycleIndex <= 5) {
+    indentationLevel = 4.2 - cycleIndex;
   } else if (cycleIndex <= 6) {
-    indentationLevel = 4 - cycleIndex;
+    indentationLevel = 4.8 - cycleIndex;
+  } else if (cycleIndex <= 7) {
+    indentationLevel = 6.2 - cycleIndex;
   } else {
     indentationLevel = cycleIndex - 8;
   }
@@ -62,7 +72,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
         className="relative"
         style={{
           right: `${rightPosition}px`,
-          marginTop: isFirst && !isCompleted ? 60 : 24,
+          marginTop: isFirst && !isCompleted ? 60 : 20,
         }}
       >
         {current ? (

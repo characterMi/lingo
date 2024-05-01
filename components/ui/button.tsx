@@ -1,6 +1,6 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -16,16 +16,16 @@ const buttonVariants = cva(
         defaultOutline:
           "bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100",
         primary:
-          "bg-sky-400 text-primary-foreground hover:bg-sky-400/90 border-sky-500 border-b-4 active:border-b-0",
+          "bg-sky-400 text-primary-foreground hover:bg-sky-400/90 border-sky-500 border-t-white border-b-4 active:border-b-0 active:border-t-4",
         primaryOutline: "bg-white text-sky-500 hover:bg-slate-100",
         secondary:
-          "bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-b-4 active:border-b-0",
+          "bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-t-white border-b-4 active:border-b-0 active:border-t-4",
         secondaryOutline: "bg-white text-green-500 hover:bg-green-50",
         danger:
-          "bg-rose-500 text-primary-foreground hover:bg-rose-500/90 border-rose-600 border-b-4 active:border-b-0",
+          "bg-rose-500 text-primary-foreground hover:bg-rose-500/90 border-rose-600 border-t-white border-b-4 active:border-b-0 active:border-t-4",
         dangerOutline: "bg-white text-rose-500 hover:bg-rose-50",
         super:
-          "bg-indigo-500 text-primary-foreground hover:bg-indigo-500/90 border-indigo-600 border-b-4 active:border-b-0",
+          "bg-indigo-500 text-primary-foreground hover:bg-indigo-500/90 border-indigo-600 border-t-white border-b-4 active:border-b-0 active:border-t-4",
         superOutline: "bg-white text-indigo-500 hover:bg-indigo-50",
         sidebar:
           "bg-transparent text-slate-500 border-2 border-transparent hover:bg-sky-50 transition-none",

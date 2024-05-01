@@ -1,5 +1,7 @@
 import { MobileSidebar } from "@/components/MobileHeader";
 import { Sidebar } from "@/components/Sidebar";
+import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
+import { Loader } from "lucide-react";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,6 +13,16 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </section>
       </main>
+
+      <section className="fixed bottom-6 right-5 block lg:hidden">
+        <ClerkLoading>
+          <Loader className="w-5 h-5 text-muted-foreground animate-spin" />
+        </ClerkLoading>
+
+        <ClerkLoaded>
+          <UserButton afterSignOutUrl="/" />
+        </ClerkLoaded>
+      </section>
     </>
   );
 };

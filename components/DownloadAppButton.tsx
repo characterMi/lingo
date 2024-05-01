@@ -32,7 +32,12 @@ const DownloadAppButton = () => {
   }, []);
 
   return (
-    <Button variant="secondary" className="download-btn" onClick={handleDownload} size="icon">
+    <Button
+      variant="secondary"
+      className="download-btn"
+      onClick={handleDownload}
+      size="icon"
+    >
       <svg
         stroke="currentColor"
         fill="none"
