@@ -25,11 +25,45 @@ export const Unit: FC<UnitsProps> = ({
   activeLessonPercentage,
   description,
   lessons,
+  id,
+  order,
   title,
 }) => {
+  // Background and borders.
+  const cycleLength = 5;
+  const cycleIndex = order % cycleLength;
+
+  let background;
+  let border;
+
+  if (cycleIndex <= 1) {
+    background = "#22c55e";
+    border = "border-green-600";
+  } else if (cycleIndex <= 2) {
+    background = "#c084fc";
+    border = "border-purple-500";
+  } else if (cycleIndex <= 3) {
+    background = "#34d399";
+    border = "border-emerald-500";
+  } else if (cycleIndex <= 4) {
+    background = "#38bdf8";
+    border = "border-sky-500";
+  } else if (cycleIndex <= 5) {
+    background = "#fb923c";
+    border = "border-orange-500";
+  } else {
+    background = "#22c55e";
+    border = "border-green-600";
+  }
+
   return (
     <>
-      <UnitBanner title={title} description={description} />
+      <UnitBanner
+        title={title}
+        description={description}
+        isActiveUnit={activeLesson?.unitId === id}
+        background={background}
+      />
 
       <div className="flex items-center flex-col relative">
         {lessons.map((lesson, i) => {
@@ -45,6 +79,8 @@ export const Unit: FC<UnitsProps> = ({
               current={isCurrent}
               locked={isLocked}
               percentage={activeLessonPercentage}
+              background={background}
+              border={border}
             />
           );
         })}

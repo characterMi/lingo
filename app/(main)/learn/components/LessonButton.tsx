@@ -17,6 +17,8 @@ interface LessonButtonProps {
   locked?: boolean;
   current?: boolean;
   percentage: number;
+  background: string;
+  border: string;
 }
 
 export const LessonButton: FC<LessonButtonProps> = ({
@@ -26,6 +28,8 @@ export const LessonButton: FC<LessonButtonProps> = ({
   totalCount,
   current,
   locked,
+  background,
+  border,
 }) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
@@ -77,7 +81,12 @@ export const LessonButton: FC<LessonButtonProps> = ({
       >
         {current ? (
           <div className="size-[102px] relative">
-            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase text-green-500 bg-white rounded-xl animate-bounce tracking-wide z-10 after:absolute after:left-1/2 after:-bottom-2 after:size-0 after:border-x-8 after:border-x-transparent after:border-t-8 after:-translate-x-1/2">
+            <div
+              className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase bg-white rounded-xl animate-bounce tracking-wide z-10 after:absolute after:left-1/2 after:-bottom-2 after:size-0 after:border-x-8 after:border-x-transparent after:border-t-8 after:-translate-x-1/2"
+              style={{
+                color: background,
+              }}
+            >
               Start
             </div>
 
@@ -85,7 +94,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
               value={Number.isNaN(percentage) ? 0 : percentage}
               styles={{
                 path: {
-                  stroke: "#4ade80",
+                  stroke: background,
                 },
                 trail: {
                   stroke: "#e5e7eb",
@@ -94,8 +103,13 @@ export const LessonButton: FC<LessonButtonProps> = ({
             >
               <Button
                 size="rounded"
-                variant={locked ? "locked" : "secondary"}
-                className="size-[70px] border-b-8"
+                variant={locked ? "locked" : "default"}
+                className={`size-[70px] border-0 border-b-8 active:border-b-0 ${
+                  !locked && border
+                }`}
+                style={{
+                  background,
+                }}
               >
                 <Icon
                   className={cn(
@@ -112,8 +126,13 @@ export const LessonButton: FC<LessonButtonProps> = ({
         ) : (
           <Button
             size="rounded"
-            variant={locked ? "locked" : "secondary"}
-            className="size-[70px] border-b-8"
+            variant={locked ? "locked" : "default"}
+            className={`size-[70px] border-0 border-b-8 active:border-b-0 ${
+              !locked && border
+            }`}
+            style={{
+              background: !locked ? background : "",
+            }}
           >
             <Icon
               className={cn(
