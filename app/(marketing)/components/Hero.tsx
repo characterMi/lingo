@@ -30,13 +30,21 @@ const Hero = () => {
 
           <ClerkLoaded>
             <SignedOut>
-              <SignUpButton mode="modal" signInFallbackRedirectUrl="/learn">
+              <SignUpButton
+                mode="modal"
+                signInFallbackRedirectUrl="/learn"
+                fallbackRedirectUrl="/learn"
+              >
                 <Button className="w-full" size="lg" variant="secondary">
                   Get Started
                 </Button>
               </SignUpButton>
 
-              <SignInButton mode="modal" signUpFallbackRedirectUrl="/learn">
+              <SignInButton
+                mode="modal"
+                signUpFallbackRedirectUrl="/learn"
+                fallbackRedirectUrl="/learn"
+              >
                 <Button className="w-full" size="lg" variant="primaryOutline">
                   I already have an account
                 </Button>

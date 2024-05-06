@@ -33,11 +33,15 @@ const Navbar = () => {
 
         <ClerkLoaded>
           <SignedIn>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </SignedIn>
 
           <SignedOut>
-            <SignInButton mode="modal" signUpFallbackRedirectUrl="/learn">
+            <SignInButton
+              mode="modal"
+              signUpFallbackRedirectUrl="/learn"
+              fallbackRedirectUrl="/learn"
+            >
               <Button size="lg" variant="defaultOutline">
                 Login
               </Button>
