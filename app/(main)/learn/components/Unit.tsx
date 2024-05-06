@@ -30,7 +30,7 @@ export const Unit: FC<UnitsProps> = ({
   title,
 }) => {
   // Background and borders.
-  const cycleLength = 5;
+  const cycleLength = 6;
   const cycleIndex = order % cycleLength;
 
   let background;

@@ -1,6 +1,6 @@
+import { neon } from "@neondatabase/serverless";
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/neon-http";
-import { neon } from "@neondatabase/serverless";
 
 import * as schema from "../db/schema";
 
@@ -19,6 +19,7 @@ const db = drizzle(sql, { schema });
     await db.delete(schema.challenges);
     await db.delete(schema.units);
     await db.delete(schema.lessons);
+    await db.delete(schema.userSubscription);
 
     console.log("Resetting finished");
   } catch (error) {

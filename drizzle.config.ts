@@ -6,6 +6,6 @@ export default {
   out: "./drizzle",
   driver: "pg",
   dbCredentials: {
-    connectionString: "postgresql://lingo_owner:x8vXHr2YsbEj@ep-dry-voice-a5oymc2z.us-east-2.aws.neon.tech/lingo?sslmode=require",
+    connectionString: process.env.DB_URL!,
   },
 } satisfies Config;
