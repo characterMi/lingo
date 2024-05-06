@@ -1,6 +1,6 @@
 "use server";
 
-import { auth, currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
 import { getUserSubscription } from "@/db/queries";
 import { stripe } from "@/lib/stripe";

@@ -20,7 +20,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         </ClerkLoading>
 
         <ClerkLoaded>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </ClerkLoaded>
       </section>
     </>
