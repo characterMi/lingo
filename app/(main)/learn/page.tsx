@@ -54,13 +54,12 @@ const LearnPage = async () => {
         <Navbar title={userProgress.activeCourse.title} />
 
         {units.map((unit) => (
-          <div className="mb-10" key={unit.id}>
-            <Unit
-              {...unit}
-              activeLesson={courseProgress.activeLesson}
-              activeLessonPercentage={lessonPercentage}
-            />
-          </div>
+          <Unit
+            {...unit}
+            activeLesson={courseProgress.activeLesson}
+            activeLessonPercentage={lessonPercentage}
+            key={unit.id}
+          />
         ))}
       </FeedWrapper>
       <StickyWrapper>

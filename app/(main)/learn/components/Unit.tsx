@@ -57,7 +57,7 @@ export const Unit: FC<UnitsProps> = ({
   }
 
   return (
-    <>
+    <div className={`mb-10 unit-section__${cycleIndex}`}>
       <UnitBanner
         title={title}
         description={description}
@@ -85,6 +85,6 @@ export const Unit: FC<UnitsProps> = ({
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
