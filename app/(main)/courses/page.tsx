@@ -1,6 +1,6 @@
 import { getCourses, getUserProgress } from "@/db/queries";
-import { CoursesList } from "./components/CoursesList";
 import { Metadata } from "next";
+import { CoursesList } from "./components/CoursesList";
 
 export const metadata: Metadata = {
   title: "Lingo | Courses page",
@@ -33,4 +33,5 @@ const CoursesPage = async () => {
     </main>
   );
 };
+
 export default CoursesPage;

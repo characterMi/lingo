@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <>
       <div className="relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0">
-        <Image src="hero.svg" priority fill alt="Hero" />
+        <Image src="hero.svg" priority fill alt="Hero" loading="eager" />
       </div>
 
       <div className="flex flex-col items-center gap-y-8">
@@ -62,4 +62,5 @@ const Hero = () => {
     </>
   );
 };
+
 export default Hero;

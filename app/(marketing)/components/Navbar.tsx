@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   ClerkLoaded,
   ClerkLoading,
@@ -8,7 +9,6 @@ import {
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 import Image from "next/image";
-import { Button } from "../../../components/ui/button";
 
 const Navbar = () => {
   return (
@@ -21,6 +21,7 @@ const Navbar = () => {
             alt="Mascot"
             width={40}
             height={40}
+            loading="eager"
           />
           <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">
             Lingo
@@ -52,4 +53,5 @@ const Navbar = () => {
     </header>
   );
 };
+
 export default Navbar;
