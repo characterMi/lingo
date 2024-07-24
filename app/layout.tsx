@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 
-import { ClerkProvider } from "@clerk/nextjs";
-
 import { Toaster } from "sonner";
 
 import ExitModal from "@/components/Modals/ExitModal";
@@ -20,6 +18,7 @@ export const metadata: Metadata = {
     apple: "/mascot-192.png",
     icon: "/mascot-192.png",
   },
+  keywords: ["language", "language learning", "lingo", "duolingo"],
 };
 
 export const viewport: Viewport = {
@@ -27,7 +26,6 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false,
   colorScheme: "only light",
   viewportFit: "cover",
 };
@@ -38,22 +36,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        variables: {
-          colorPrimary: "#16a34a",
-        },
-      }}
-    >
-      <html lang="en">
-        <body className={font.className}>
-          <Toaster />
-          <ExitModal />
-          <HeartsModal />
-          <PracticeModal />
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={font.className}>
+        <Toaster />
+        <ExitModal />
+        <HeartsModal />
+        <PracticeModal />
+        {children}
+      </body>
+    </html>
   );
 }

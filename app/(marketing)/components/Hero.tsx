@@ -1,13 +1,4 @@
 import { Button } from "@/components/ui/button";
-import {
-  ClerkLoaded,
-  ClerkLoading,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-} from "@clerk/nextjs";
-import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,39 +15,11 @@ const Hero = () => {
         </h1>
 
         <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
-          <ClerkLoading>
-            <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
-          </ClerkLoading>
-
-          <ClerkLoaded>
-            <SignedOut>
-              <SignUpButton
-                mode="modal"
-                signInFallbackRedirectUrl="/learn"
-                fallbackRedirectUrl="/learn"
-              >
-                <Button className="w-full" size="lg" variant="secondary">
-                  Get Started
-                </Button>
-              </SignUpButton>
-
-              <SignInButton
-                mode="modal"
-                signUpFallbackRedirectUrl="/learn"
-                fallbackRedirectUrl="/learn"
-              >
-                <Button className="w-full" size="lg" variant="primaryOutline">
-                  I already have an account
-                </Button>
-              </SignInButton>
-            </SignedOut>
-
-            <SignedIn>
-              <Button className="w-full" size="lg" variant="secondary" asChild>
-                <Link href="/learn">Continue learning</Link>
-              </Button>
-            </SignedIn>
-          </ClerkLoaded>
+          <Link href="/learn" className="w-full">
+            <Button className="w-full" size="lg" variant="secondary">
+              Let's start!
+            </Button>
+          </Link>
         </div>
       </div>
     </>

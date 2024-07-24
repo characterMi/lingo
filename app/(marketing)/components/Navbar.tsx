@@ -1,13 +1,4 @@
-import { Button } from "@/components/ui/button";
-import {
-  ClerkLoaded,
-  ClerkLoading,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import { Loader } from "lucide-react";
+import DownloadAppButton from "@/components/DownloadAppButton";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -28,27 +19,9 @@ const Navbar = () => {
           </h1>
         </div>
 
-        <ClerkLoading>
-          <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
-        </ClerkLoading>
-
-        <ClerkLoaded>
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
-
-          <SignedOut>
-            <SignInButton
-              mode="modal"
-              signUpFallbackRedirectUrl="/learn"
-              fallbackRedirectUrl="/learn"
-            >
-              <Button size="lg" variant="defaultOutline">
-                Login
-              </Button>
-            </SignInButton>
-          </SignedOut>
-        </ClerkLoaded>
+        <DownloadAppButton size="default" variant="defaultOutline">
+          Get the App
+        </DownloadAppButton>
       </nav>
     </header>
   );

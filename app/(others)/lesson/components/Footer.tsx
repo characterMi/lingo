@@ -26,7 +26,7 @@ export const Footer: FC<FooterProps> = ({
   return (
     <footer
       className={cn(
-        "lg:h-[140px] h-[100px] border-t-2 mt-2 py-8",
+        "lg:h-[140px] h-[100px] border-t-2 mt-2 py-8 footer",
         status === "correct" && "bg-transparent bg-green-100",
         status === "wrong" && "bg-transparent bg-red-100"
       )}

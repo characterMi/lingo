@@ -1,11 +1,21 @@
 import { MobileSidebar } from "@/components/MobileHeader";
 import { Sidebar } from "@/components/Sidebar";
-import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
-import { Loader } from "lucide-react";
+import {
+  ClerkLoaded,
+  ClerkLoading,
+  ClerkProvider,
+  UserButton,
+} from "@clerk/nextjs";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#16a34a",
+        },
+      }}
+    >
       <MobileSidebar />
       <Sidebar className="hidden lg:flex" />
       <main className="lg:ml-[256px] h-full pt-12 lg:pt-0">
@@ -16,14 +26,14 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
       <section className="fixed bottom-6 right-5 block lg:hidden">
         <ClerkLoading>
-          <Loader className="w-5 h-5 text-muted-foreground animate-spin" />
+          <div className="size-8 rounded-full skeleton" />
         </ClerkLoading>
 
         <ClerkLoaded>
           <UserButton afterSignOutUrl="/" />
         </ClerkLoaded>
       </section>
-    </>
+    </ClerkProvider>
   );
 };
 export default MainLayout;
