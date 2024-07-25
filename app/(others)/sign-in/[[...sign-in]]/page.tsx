@@ -1,7 +1,14 @@
-import { SignIn } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, SignIn } from "@clerk/nextjs";
+import { Loader } from "lucide-react";
 
 export default () => (
   <main className="w-full h-full flex justify-center items-center">
-    <SignIn />
+    <ClerkLoading>
+      <Loader className="h-6 w-6 text-muted-foreground animate-spin" />
+    </ClerkLoading>
+
+    <ClerkLoaded>
+      <SignIn />
+    </ClerkLoaded>
   </main>
 );

@@ -12,7 +12,7 @@ const Footer = () => {
             size="lg"
             key={flag.label}
             variant="defaultOutline"
-            className="w-full max-[750px]:flex-[0_0_20%]"
+            className="w-full"
           >
             <Image
               src={flag.src}
