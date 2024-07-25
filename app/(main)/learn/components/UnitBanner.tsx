@@ -33,7 +33,7 @@ export const UnitBanner: FC<UnitBannerProps> = ({
         <Link href="/lesson">
           <Button
             size="lg"
-            className="hidden lg:flex text-white"
+            className="hidden xl:flex text-white"
             style={{
               background,
             }}

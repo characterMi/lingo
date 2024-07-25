@@ -1,9 +1,30 @@
-import { Loader } from "lucide-react";
+import { FeedWrapper } from "@/components/FeedWrapper";
+import { StickyWrapper } from "@/components/StickyWrapper";
+import StickyWrapperLoader from "@/components/loader/StickyWrapperLoader";
+import TitleLoader from "@/components/loader/TitleLoader";
 
 const Loading = () => {
   return (
-    <div className="h-full w-full flex items-center justify-center">
-      <Loader className="h-6 w-6 text-muted-foreground animate-spin" />
+    <div className="flex gap-12 px-6">
+      <FeedWrapper>
+        <TitleLoader />
+
+        <div className="flex flex-col gap-y-4 w-full mt-10">
+          {[...Array(10)].map((_, i) => (
+            <div className="w-full flex justify-between items-center" key={i}>
+              <div className="flex items-center gap-x-2">
+                <div className="size-10 rounded-full skeleton" />
+                <div className="w-32 h-6 rounded-md skeleton" />
+              </div>
+
+              <div className="w-14 h-6 rounded-md skeleton" />
+            </div>
+          ))}
+        </div>
+      </FeedWrapper>
+      <StickyWrapper>
+        <StickyWrapperLoader />
+      </StickyWrapper>
     </div>
   );
 };

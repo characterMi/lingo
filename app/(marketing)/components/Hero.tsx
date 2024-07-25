@@ -17,7 +17,7 @@ const Hero = () => {
         <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
           <Link href="/learn" className="w-full">
             <Button className="w-full" size="lg" variant="secondary">
-              Let's start!
+              Let's Get started!
             </Button>
           </Link>
         </div>

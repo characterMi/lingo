@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
 import { getLesson, getUserProgress, getUserSubscription } from "@/db/queries";
+import { redirect } from "next/navigation";
 import { Quiz } from "./components/Quiz";
 
 const LessonPage = async () => {
@@ -31,4 +31,5 @@ const LessonPage = async () => {
     />
   );
 };
+
 export default LessonPage;

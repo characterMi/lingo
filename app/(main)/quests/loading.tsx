@@ -1,9 +1,22 @@
-import { Loader } from "lucide-react";
+import { FeedWrapper } from "@/components/FeedWrapper";
+import QuestsLoader from "@/components/loader/QuestsLoader";
+import StickyWrapperLoader from "@/components/loader/StickyWrapperLoader";
+import TitleLoader from "@/components/loader/TitleLoader";
+import { StickyWrapper } from "@/components/StickyWrapper";
 
 const Loading = () => {
   return (
-    <div className="h-full w-full flex items-center justify-center">
-      <Loader className="h-6 w-6 text-muted-foreground animate-spin" />
+    <div className="flex gap-12 px-6">
+      <FeedWrapper>
+        <TitleLoader />
+
+        <div className="w-full mt-10">
+          <QuestsLoader />
+        </div>
+      </FeedWrapper>
+      <StickyWrapper>
+        <StickyWrapperLoader />
+      </StickyWrapper>
     </div>
   );
 };

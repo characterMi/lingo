@@ -1,5 +1,5 @@
-import { FC, useCallback } from "react";
 import Image from "next/image";
+import { FC, useCallback } from "react";
 
 import { useAudio, useKey } from "react-use";
 
@@ -22,7 +22,6 @@ interface CardProps {
 const Card: FC<CardProps> = ({
   audioSrc,
   disabled,
-  id,
   imgSrc,
   onClick,
   shortcut,

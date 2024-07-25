@@ -1,11 +1,11 @@
 "use client";
 
-import { useTransition } from "react";
-import Image from "next/image";
-import { toast } from "sonner";
 import { refillHearts } from "@/actions/userProgress";
 import { createStripeUrl } from "@/actions/userSubscription";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { useTransition } from "react";
+import { toast } from "sonner";
 
 type Props = {
   hearts: number;
@@ -43,7 +43,13 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
   return (
     <ul className="w-full">
       <li className="flex items-center w-full p-4 gap-x-4 border-t-2">
-        <Image src="/heart.svg" alt="Heart" width={60} height={60} />
+        <Image
+          src="/heart.svg"
+          alt="Heart"
+          className="size-10 sm:size-16"
+          width={60}
+          height={60}
+        />
 
         <div className="flex-1">
           <p className="text-neutral-700 text-base lg:text-xl font-bold">
@@ -68,7 +74,13 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
       </li>
 
       <li className="flex items-center w-full p-4 pt-8 gap-x-4 border-t-2">
-        <Image src="/unlimited.svg" alt="Unlimited" height={60} width={60} />
+        <Image
+          src="/unlimited.svg"
+          alt="Unlimited"
+          className="size-10 sm:size-16"
+          height={60}
+          width={60}
+        />
 
         <div className="flex-1">
           <p className="text-neutral-700 text-base lg:text-xl font-bold">
