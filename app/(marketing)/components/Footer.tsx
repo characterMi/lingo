@@ -5,14 +5,14 @@ import { footerFlags } from "@/constants";
 
 const Footer = () => {
   return (
-    <footer className="h-20 w-full border-t-2 border-slate-200 p-2 relative after:absolute after:h-full after:w-12 after:bg-gradient-to-r after:from-white after:to-transparent after:left-0 after:top-0 before:absolute before:h-full before:w-12 before:bg-gradient-to-l before:from-white before:to-transparent before:right-0 before:top-0">
-      <div className="max-w-screen-lg flex mx-auto items-center justify-evenly h-full overflow-auto snap-x snap-mandatory snap-always snap-end">
+    <footer className="h-20 w-full border-t-2 border-slate-200 py-2 md:px-2 relative after:absolute after:h-full after:w-12 after:bg-gradient-to-r after:from-white after:to-transparent after:left-0 after:top-0 before:absolute before:h-full before:w-12 before:bg-gradient-to-l before:from-white before:to-transparent before:right-0 before:top-0">
+      <div className="max-w-screen-lg flex mx-auto items-center justify-evenly h-full overflow-auto snap-x snap-mandatory snap-always">
         {footerFlags.map((flag) => (
           <Button
             size="lg"
             key={flag.label}
             variant="defaultOutline"
-            className="w-full"
+            className="w-full snap-start"
           >
             <Image
               src={flag.src}
