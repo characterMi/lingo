@@ -16,7 +16,7 @@ const Footer = () => {
           >
             <Image
               src={flag.src}
-              alt={flag.label}
+              alt={`Learn the ${flag.label} language`}
               height={32}
               width={40}
               className="rounded-md mr-4 shadow-[0_0_5px_#999999]"
