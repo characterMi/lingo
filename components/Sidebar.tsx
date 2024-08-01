@@ -50,7 +50,7 @@ export const Sidebar = ({ className }: Props) => (
 
       <ClerkLoaded>
         <div className="hidden lg:block">
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </div>
 
         <DownloadAppButton size="icon" variant="secondary">

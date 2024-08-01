@@ -71,12 +71,15 @@ export const LessonButton: FC<LessonButtonProps> = ({
       href={href}
       aria-disabled={locked}
       className={locked ? "pointer-events-none" : "pointer-events-auto"}
+      style={{
+        marginTop: isFirst && !isCompleted ? 60 : 20,
+      }}
+      aria-label="Start your lesson"
     >
       <div
         className="relative"
         style={{
           right: `${rightPosition}px`,
-          marginTop: isFirst && !isCompleted ? 60 : 20,
         }}
       >
         {current ? (
@@ -110,6 +113,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
                 style={{
                   background,
                 }}
+                aria-label="Start your lesson"
               >
                 <Icon
                   className={cn(
@@ -133,6 +137,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
             style={{
               background: !locked ? background : "",
             }}
+            aria-label="Finish Your last lesson to unlock these lessons"
           >
             <Icon
               className={cn(

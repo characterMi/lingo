@@ -40,7 +40,7 @@ const QuestsPage = async () => {
           </p>
 
           <ul className="w-full">
-            {quests.map((quest, i) => {
+            {quests.map((quest) => {
               const progress = (userProgress.points / quest.value) * 100;
 
               return (
@@ -60,7 +60,11 @@ const QuestsPage = async () => {
                       {quest.title}
                     </p>
 
-                    <Progress value={progress} className="h-3" />
+                    <Progress
+                      value={progress}
+                      className="h-3"
+                      aria-label={`Quest Progress is ${progress}%`}
+                    />
                   </div>
                 </li>
               );

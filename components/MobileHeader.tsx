@@ -7,7 +7,7 @@ export const MobileSidebar = () => {
   return (
     <MobileHeaderContainer>
       <Sheet>
-        <SheetTrigger>
+        <SheetTrigger aria-label="Menu">
           <MenuIcon className="text-white" />
         </SheetTrigger>
 

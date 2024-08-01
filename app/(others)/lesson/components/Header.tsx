@@ -1,8 +1,8 @@
-import { FC } from "react";
-import Image from "next/image";
-import { InfinityIcon, X } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { useExitModal } from "@/store/useExitModal";
+import { InfinityIcon, X } from "lucide-react";
+import Image from "next/image";
+import { FC } from "react";
 
 interface HeaderProps {
   hearts: number;
@@ -24,7 +24,10 @@ export const Header: FC<HeaderProps> = ({
         className="text-slate-500 hover:opacity-75 transition cursor-pointer"
       />
 
-      <Progress value={percentage} />
+      <Progress
+        value={percentage}
+        aria-label={`Your progress is ${percentage}%`}
+      />
 
       <div className="text-rose-500 flex items-center font-bold">
         <Image
