@@ -16,8 +16,12 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         },
       }}
     >
-      <MobileSidebar />
+      <MobileSidebar>
+        <Sidebar />
+      </MobileSidebar>
+
       <Sidebar className="hidden lg:flex" />
+
       <main className="lg:ml-[256px] h-full pt-12 lg:pt-0">
         <section className="h-full max-w-[1056px] pt-6 mx-auto">
           {children}

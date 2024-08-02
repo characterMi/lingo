@@ -1,18 +1,22 @@
+"use client";
+
+import { useMobileSidebar } from "@/store/useMobileSidebar";
 import { MenuIcon } from "lucide-react";
 import MobileHeaderContainer from "./MobileHeaderContainer";
-import { Sidebar } from "./Sidebar";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
-export const MobileSidebar = () => {
+export const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
+  const { isOpen, open } = useMobileSidebar();
+
   return (
     <MobileHeaderContainer>
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={open}>
         <SheetTrigger aria-label="Menu">
           <MenuIcon className="text-white" />
         </SheetTrigger>
 
         <SheetContent className="p-0 z-[100] shadow-2xl" side="left">
-          <Sidebar />
+          {children}
         </SheetContent>
       </Sheet>
     </MobileHeaderContainer>

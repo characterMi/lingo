@@ -5,5 +5,5 @@ export const isAdmin = () => {
 
   if (!userId) return false;
 
-  return process.env.ADMIN_ID === userId ? true : false;
+  return process.env.ADMIN_ID === userId;
 };

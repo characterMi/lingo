@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
+import { useMobileSidebar } from "@/store/useMobileSidebar";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -16,11 +17,14 @@ export const SidebarItem = ({ href, iconSrc, label }: Props) => {
   const pathName = usePathname();
   const active = pathName === href;
 
+  const close = useMobileSidebar((state) => state.close);
+
   return (
     <Button
       variant={active ? "sidebarOutline" : "sidebar"}
       className="justify-start h-[52px]"
       asChild
+      onClick={close}
     >
       <Link href={href}>
         <Image

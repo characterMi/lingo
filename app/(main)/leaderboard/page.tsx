@@ -67,11 +67,11 @@ const LeaderBoardPage = async () => {
             return (
               <div
                 key={userProgress.userId}
-                className="flex items-center w-full p-2 px-4 rounded-xl hover:bg-gray-200/50"
+                className="flex items-center w-full p-2 sm:px-4 rounded-xl hover:bg-gray-200/50"
               >
-                <p className="font-bold text-lime-700 mr-4 w-4">{i + 1}</p>
+                <p className="font-bold text-lime-700 mr-4 w-2">{i + 1}</p>
 
-                <Avatar className="border bg-green-500 h-12 w-12 ml-3 mr-6">
+                <Avatar className="border bg-green-500 size-10 sm:size-12 ml-3 mr-4 sm:mr-6">
                   <AvatarImage
                     alt={userProgress.userName}
                     className="object-cover"
@@ -79,8 +79,10 @@ const LeaderBoardPage = async () => {
                   />
                 </Avatar>
 
-                <p className="font-bold text-neutral-800 flex-1 flex gap-x-1 items-center">
-                  {userProgress.userName}
+                <div className="flex-1 flex gap-x-1 items-center">
+                  <p className="truncate font-bold text-neutral-800">
+                    {userProgress.userName}
+                  </p>
                   {subscribedUser && (
                     <Image
                       src="/blue-tick.png"
@@ -89,9 +91,9 @@ const LeaderBoardPage = async () => {
                       height={16}
                     />
                   )}
-                </p>
+                </div>
 
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-sm min-[320px]:text-base">
                   {userProgress.points} XP
                 </p>
               </div>
