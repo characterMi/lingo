@@ -6,11 +6,11 @@ import MobileHeaderContainer from "./MobileHeaderContainer";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 export const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
-  const { isOpen, open } = useMobileSidebar();
+  const { isOpen, setIsOpen } = useMobileSidebar();
 
   return (
     <MobileHeaderContainer>
-      <Sheet open={isOpen} onOpenChange={open}>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger aria-label="Menu">
           <MenuIcon className="text-white" />
         </SheetTrigger>

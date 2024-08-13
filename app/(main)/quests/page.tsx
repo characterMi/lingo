@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { FeedWrapper } from "@/components/FeedWrapper";
 import { Promo } from "@/components/Promo";
 import { StickyWrapper } from "@/components/StickyWrapper";
+import SubscriptionButton from "@/components/SubscriptionButton";
 import { UserProgress } from "@/components/UserProgress";
 import { Progress } from "@/components/ui/progress";
 import { quests } from "@/constants";
@@ -24,6 +25,10 @@ const QuestsPage = async () => {
   ]);
 
   if (!userProgress || !userProgress.activeCourse) redirect("/courses");
+
+  const hasActiveSubscription = !!userSubscription?.isActive;
+  const isTheLastQuestCompleted =
+    (userProgress.points / quests[quests.length - 1].value) * 100 < 100;
 
   return (
     <main className="flex gap-12 px-6">
@@ -71,16 +76,37 @@ const QuestsPage = async () => {
             })}
           </ul>
         </div>
+
+        <div className="flex flex-col md:flex-row lg:flex-col gap-y-4 border-t-2 p-4 items-center xl:items-start justify-between">
+          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-2 items-center justify-center">
+            <Image src="/finish.svg" alt="Finished" height={60} width={60} />
+
+            <p className="text-muted-foreground text-lg text-center">
+              Get a free subscription by completing all quests.
+            </p>
+          </div>
+
+          <SubscriptionButton
+            className="w-full sm:w-max lg:w-full"
+            disabled={isTheLastQuestCompleted}
+            isFree
+            variant="super"
+          >
+            {hasActiveSubscription
+              ? "You already have it!"
+              : "Get the subscription"}
+          </SubscriptionButton>
+        </div>
       </FeedWrapper>
       <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
-          hasActiveSubscription={!!userSubscription?.isActive}
+          hasActiveSubscription={hasActiveSubscription}
         />
 
-        {!userSubscription?.isActive && <Promo />}
+        {!hasActiveSubscription && <Promo />}
       </StickyWrapper>
     </main>
   );

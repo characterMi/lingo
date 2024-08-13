@@ -6,9 +6,11 @@ import { getUserSubscription } from "@/db/queries";
 import { stripe } from "@/lib/stripe";
 import { absoluteUrl } from "@/lib/utils";
 
+type Discount = { coupon: string }[];
+
 const returnUrl = absoluteUrl("/shop");
 
-export const createStripeUrl = async () => {
+export const createStripeUrl = async (isFree?: boolean) => {
   const { userId } = auth();
   const user = await currentUser();
 
@@ -27,6 +29,14 @@ export const createStripeUrl = async () => {
     return { data: stripeSession.url };
   }
 
+  let discounts: Discount = [];
+
+  if (isFree) {
+    const couponId = await createStripeCoupon();
+
+    discounts = [{ coupon: couponId }];
+  }
+
   const stripeSession = await stripe.checkout.sessions.create({
     mode: "subscription",
     payment_method_types: ["card"],
@@ -37,6 +47,7 @@ export const createStripeUrl = async () => {
         price_data: {
           currency: "USD",
           product_data: {
+            images: ["/mascot-192.png"],
             name: "Lingo Pro",
             description: "Unlimited Hearts",
           },
@@ -47,6 +58,7 @@ export const createStripeUrl = async () => {
         },
       },
     ],
+    discounts,
     metadata: {
       userId,
     },
@@ -55,4 +67,13 @@ export const createStripeUrl = async () => {
   });
 
   return { data: stripeSession.url };
+};
+
+export const createStripeCoupon = async () => {
+  const coupon = await stripe.coupons.create({
+    duration: "once",
+    percent_off: 100,
+  });
+
+  return coupon?.id;
 };

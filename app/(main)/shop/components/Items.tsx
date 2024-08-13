@@ -1,7 +1,7 @@
 "use client";
 
 import { refillHearts } from "@/actions/userProgress";
-import { createStripeUrl } from "@/actions/userSubscription";
+import SubscriptionButton from "@/components/SubscriptionButton";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useTransition } from "react";
@@ -25,18 +25,6 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
       refillHearts()
         .then(() => toast.success("Hearts successfully refilled !"))
         .catch(() => toast.error("Something went wrong !"));
-    });
-  };
-
-  const handleUpgrade = () => {
-    startTransition(() => {
-      createStripeUrl()
-        .then((res) => {
-          if (res.data) {
-            window.location.href = res.data;
-          }
-        })
-        .catch(() => toast.error("Subscription failed !"));
     });
   };
 
@@ -88,9 +76,9 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
           </p>
         </div>
 
-        <Button disabled={pending} onClick={handleUpgrade}>
+        <SubscriptionButton>
           {hasActiveSubscription ? "settings" : "upgrade"}
-        </Button>
+        </SubscriptionButton>
       </li>
     </ul>
   );

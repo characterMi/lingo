@@ -65,6 +65,10 @@ export const quests = [
     title: "Earn 1000 XP",
     value: 1000,
   },
+  {
+    title: "Earn 3000 XP",
+    value: 3000,
+  },
 ];
 
 export const dataToInsert = {
