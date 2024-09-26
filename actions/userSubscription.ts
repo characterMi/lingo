@@ -6,8 +6,6 @@ import { getUserSubscription } from "@/db/queries";
 import { stripe } from "@/lib/stripe";
 import { absoluteUrl } from "@/lib/utils";
 
-type Discount = { coupon: string }[];
-
 const returnUrl = absoluteUrl("/shop");
 
 export const createStripeUrl = async (isFree?: boolean) => {
@@ -43,7 +41,6 @@ export const createStripeUrl = async (isFree?: boolean) => {
         price_data: {
           currency: "USD",
           product_data: {
-            images: ["/mascot-192.png"],
             name: "Lingo Pro",
             description: "Unlimited Hearts",
           },
