@@ -23,6 +23,8 @@ const SubscriptionButton = ({
   const [pending, startTransition] = useTransition();
 
   const handleUpgrade = () => {
+    if (disabled || pending) return;
+
     startTransition(() => {
       createStripeUrl(isFree)
         .then((res) => {

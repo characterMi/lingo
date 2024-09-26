@@ -29,13 +29,9 @@ export const createStripeUrl = async (isFree?: boolean) => {
     return { data: stripeSession.url };
   }
 
-  let discounts: Discount = [];
+  const couponId = process.env.STRIPE_COUPON_ID;
 
-  if (isFree) {
-    const couponId = await createStripeCoupon();
-
-    discounts = [{ coupon: couponId }];
-  }
+  const discounts = isFree && couponId ? [{ coupon: couponId }] : undefined;
 
   const stripeSession = await stripe.checkout.sessions.create({
     mode: "subscription",
@@ -67,13 +63,4 @@ export const createStripeUrl = async (isFree?: boolean) => {
   });
 
   return { data: stripeSession.url };
-};
-
-export const createStripeCoupon = async () => {
-  const coupon = await stripe.coupons.create({
-    duration: "once",
-    percent_off: 100,
-  });
-
-  return coupon?.id;
 };
