@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { ComponentProps, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
 
-const DownloadAppButton = ({
-  children,
-  size,
-  variant,
-}: {
+type Props = {
   children: React.ReactNode;
   size: "icon" | "default";
   variant: "secondary" | "defaultOutline";
-}) => {
+} & ComponentProps<"button">;
+
+const DownloadAppButton = ({ children, size, variant, ...props }: Props) => {
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
 
   const handleDownload = () => {
@@ -45,6 +43,7 @@ const DownloadAppButton = ({
       className="download-btn"
       onClick={handleDownload}
       size={size}
+      {...props}
     >
       {children}
     </Button>

@@ -19,8 +19,8 @@ export const Sidebar = ({ className }: Props) => (
       className
     )}
   >
-    <Link href="/">
-      <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
+    <Link href="/" aria-label="Go back to home page">
+      <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3" aria-hidden>
         <Image src="/mascot.svg" priority alt="Mascot" width={40} height={40} />
         <h1 className="text-2xl font-extrabold text-green-600 tracking-wide">
           Lingo
@@ -45,7 +45,10 @@ export const Sidebar = ({ className }: Props) => (
 
     <div className="py-4 px-2 flex justify-between items-center">
       <ClerkLoading>
-        <div className="size-8 rounded-full skeleton" />
+        <div
+          className="size-8 rounded-full skeleton"
+          aria-label="Your account setting is loading..."
+        />
       </ClerkLoading>
 
       <ClerkLoaded>
@@ -53,7 +56,11 @@ export const Sidebar = ({ className }: Props) => (
           <UserButton />
         </div>
 
-        <DownloadAppButton size="icon" variant="secondary">
+        <DownloadAppButton
+          size="icon"
+          variant="secondary"
+          aria-label="Download the app"
+        >
           <svg
             stroke="currentColor"
             fill="none"
@@ -64,6 +71,7 @@ export const Sidebar = ({ className }: Props) => (
             height="2em"
             width="2em"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
           >
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>

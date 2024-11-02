@@ -1,10 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 import { courses } from "@/db/schema";
 
-import { Button } from "./ui/button";
 import { InfinityIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
 type Props = {
   activeCourse: typeof courses.$inferSelect;
@@ -21,8 +21,8 @@ export const UserProgress = ({
 }: Props) => {
   return (
     <section className="flex justify-between items-center gap-x-2 w-full">
-      <Link href="/courses">
-        <Button variant="defaultOutline">
+      <Link href="/courses" aria-label="Go to courses page">
+        <Button variant="defaultOutline" tabIndex={-1} aria-hidden>
           <Image
             src={activeCourse.imgSrc}
             alt={activeCourse.title}
@@ -33,8 +33,13 @@ export const UserProgress = ({
         </Button>
       </Link>
 
-      <Link href="/shop">
-        <Button className="text-orange-500" variant="defaultOutline">
+      <Link href="/shop" aria-label="Go to shop page">
+        <Button
+          className="text-orange-500"
+          variant="defaultOutline"
+          tabIndex={-1}
+          aria-hidden
+        >
           <Image
             src="/points.svg"
             alt="Points"
@@ -47,8 +52,13 @@ export const UserProgress = ({
         </Button>
       </Link>
 
-      <Link href="/shop">
-        <Button className="text-orange-500" variant="defaultOutline">
+      <Link href="/shop" aria-label="Go to shop page">
+        <Button
+          className="text-orange-500"
+          variant="defaultOutline"
+          tabIndex={-1}
+          aria-hidden
+        >
           <Image
             src="/heart.svg"
             alt="Hearts"

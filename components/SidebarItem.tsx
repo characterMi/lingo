@@ -25,6 +25,7 @@ export const SidebarItem = ({ href, iconSrc, label }: Props) => {
       className="justify-start h-[52px]"
       asChild
       onClick={close}
+      role="menuitem"
     >
       <Link href={href}>
         <Image

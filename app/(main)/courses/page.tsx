@@ -21,9 +21,9 @@ const CoursesPage = async () => {
       <h1 className="text-2xl font-bold text-neutral-700">Language Courses</h1>
 
       {courses.length === 0 ? (
-        <h1 className="mt-10 text-center text-3xl underline">
+        <h2 className="mt-10 text-center text-3xl underline">
           No language found !
-        </h1>
+        </h2>
       ) : (
         <CoursesList
           courses={courses}

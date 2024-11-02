@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
+import { usePracticeModal } from "@/store/usePracticeModal";
+import { Button } from "../ui/button";
 import {
   Dialog,
   DialogContent,
@@ -12,11 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../ui/dialog";
-import { Button } from "../ui/button";
-import { usePracticeModal } from "@/store/usePracticeModal";
 
 const PracticeModal = () => {
-  const router = useRouter();
   const [isClient, setIsClient] = useState(false);
   const { isOpen, close } = usePracticeModal();
 

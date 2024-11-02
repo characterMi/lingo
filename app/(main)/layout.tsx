@@ -30,7 +30,10 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
       <section className="fixed bottom-6 right-5 block lg:hidden">
         <ClerkLoading>
-          <div className="size-8 rounded-full skeleton" />
+          <div
+            className="size-8 rounded-full skeleton"
+            aria-label="Your account setting is loading..."
+          />
         </ClerkLoading>
 
         <ClerkLoaded>

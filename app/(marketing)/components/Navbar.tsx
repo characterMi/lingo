@@ -9,7 +9,7 @@ const Navbar = () => {
           <Image
             src="/mascot.svg"
             priority
-            alt="Mascot"
+            alt="Logo"
             width={40}
             height={40}
             loading="eager"

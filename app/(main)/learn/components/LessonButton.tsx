@@ -74,13 +74,19 @@ export const LessonButton: FC<LessonButtonProps> = ({
       style={{
         marginTop: isFirst && !isCompleted ? 60 : 20,
       }}
-      aria-label="Start your lesson"
+      aria-label={
+        current
+          ? "Start your lesson"
+          : "Finish Your last lesson to unlock this one"
+      }
+      tabIndex={!locked ? 0 : -1}
     >
       <div
         className="relative"
         style={{
           right: `${rightPosition}px`,
         }}
+        aria-hidden
       >
         {current ? (
           <div className="size-[102px] relative">
@@ -113,7 +119,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
                 style={{
                   background,
                 }}
-                aria-label="Start your lesson"
+                tabIndex={-1}
               >
                 <Icon
                   className={cn(
@@ -137,7 +143,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
             style={{
               background: !locked ? background : "",
             }}
-            aria-label="Finish Your last lesson to unlock these lessons"
+            tabIndex={-1}
           >
             <Icon
               className={cn(

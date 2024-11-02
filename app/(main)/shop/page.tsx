@@ -35,7 +35,7 @@ const ShopPage = async () => {
   }
 
   return (
-    <main className="flex gap-12 px-6">
+    <div className="flex gap-12 px-6">
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
           <Image src="/shop.svg" alt="Shop" height={90} width={90} />
@@ -69,7 +69,7 @@ const ShopPage = async () => {
 
         <Quests points={userProgress.points} />
       </StickyWrapper>
-    </main>
+    </div>
   );
 };
 export default ShopPage;

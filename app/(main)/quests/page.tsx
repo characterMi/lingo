@@ -31,7 +31,7 @@ const QuestsPage = async () => {
     (userProgress.points / quests[quests.length - 1].value) * 100 < 100;
 
   return (
-    <main className="flex gap-12 px-6">
+    <div className="flex gap-12 px-6">
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
           <Image src="/quests.svg" alt="Quests" height={90} width={90} />
@@ -55,7 +55,7 @@ const QuestsPage = async () => {
                 >
                   <Image
                     src="/points.svg"
-                    alt="Points"
+                    alt="total points"
                     height={60}
                     width={60}
                   />
@@ -79,7 +79,13 @@ const QuestsPage = async () => {
 
         <div className="flex flex-col md:flex-row lg:flex-col gap-y-4 border-t-2 p-4 items-center xl:items-start justify-between">
           <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-2 items-center justify-center">
-            <Image src="/finish.svg" alt="Finished" height={60} width={60} />
+            <Image
+              src="/finish.svg"
+              alt="Finished"
+              height={60}
+              width={60}
+              aria-hidden
+            />
 
             <p className="text-muted-foreground text-lg text-center">
               Get a free subscription by completing all quests.
@@ -108,7 +114,7 @@ const QuestsPage = async () => {
 
         {!hasActiveSubscription && <Promo />}
       </StickyWrapper>
-    </main>
+    </div>
   );
 };
 export default QuestsPage;

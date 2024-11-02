@@ -37,6 +37,7 @@ export const UnitBanner: FC<UnitBannerProps> = ({
             style={{
               background,
             }}
+            aria-hidden
           >
             <NotebookText className="mr-2" /> Continue
           </Button>

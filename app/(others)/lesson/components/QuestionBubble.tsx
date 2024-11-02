@@ -1,5 +1,5 @@
-import { FC } from "react";
 import Image from "next/image";
+import { FC } from "react";
 
 interface QuestionBubbleProps {
   question: string;
@@ -14,12 +14,16 @@ export const QuestionBubble: FC<QuestionBubbleProps> = ({ question }) => {
         width={60}
         height={60}
         className="size-10 lg:size-16"
+        aria-hidden
       />
 
       <div className="relative py-2 px-4 border-2 rounded-xl text-sm lg:text-base">
         {question}
 
-        <div className="absolute size-0 border-x-8 -left-3 top-1/2 border-x-transparent border-t-8 transform -translate-y-1/2 rotate-90" />
+        <div
+          className="absolute size-0 border-x-8 -left-3 top-1/2 border-x-transparent border-t-8 transform -translate-y-1/2 rotate-90"
+          aria-hidden
+        />
       </div>
     </div>
   );

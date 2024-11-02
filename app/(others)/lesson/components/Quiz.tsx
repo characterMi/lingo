@@ -181,6 +181,7 @@ export const Quiz: FC<QuizProps> = ({
           recycle={false}
           numberOfPieces={500}
           tweenDuration={10000}
+          aria-hidden
         />
 
         <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto items-center justify-center text-center h-full">

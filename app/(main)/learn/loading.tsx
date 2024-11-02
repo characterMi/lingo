@@ -4,8 +4,8 @@ import StickyWrapperLoader from "@/components/loader/StickyWrapperLoader";
 
 const Loading = () => {
   return (
-    <div className="flex gap-12 px-6">
-      <FeedWrapper>
+    <div className="flex gap-12 px-6" aria-label="The page is loading...">
+      <FeedWrapper aria-hidden>
         <div className="w-full h-24 flex justify-between items-center pb-4">
           <div />
           <div className="w-24 h-10 skeleton rounded-md" />
@@ -52,7 +52,7 @@ const Loading = () => {
           </div>
         </div>
       </FeedWrapper>
-      <StickyWrapper>
+      <StickyWrapper aria-hidden>
         <StickyWrapperLoader />
       </StickyWrapper>
     </div>

@@ -39,12 +39,12 @@ const LeaderBoardPage = async () => {
   }
 
   return (
-    <main className="flex gap-12 px-6">
+    <div className="flex gap-12 px-6">
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
           <Image
             src="/leaderboard.svg"
-            alt="Leaderboard"
+            alt="Leaderboard page image"
             height={90}
             width={90}
           />
@@ -57,7 +57,7 @@ const LeaderBoardPage = async () => {
             See where you stand among other learners in the community.
           </p>
 
-          <Separator className="mb-4 h-0.5 rounded-full" />
+          <Separator className="mb-4 h-0.5 rounded-full" aria-hidden />
 
           {leaderboard.map((userProgress, i) => {
             const subscribedUser = allSubscribedUser?.find(
@@ -69,11 +69,16 @@ const LeaderBoardPage = async () => {
                 key={userProgress.userId}
                 className="flex items-center w-full p-2 sm:px-4 rounded-xl hover:bg-gray-200/50"
               >
-                <p className="font-bold text-lime-700 mr-4 w-2">{i + 1}</p>
+                <p
+                  className="font-bold text-lime-700 mr-4 w-2"
+                  aria-label="Player count"
+                >
+                  {i + 1}
+                </p>
 
                 <Avatar className="border bg-green-500 size-10 sm:size-12 ml-3 mr-4 sm:mr-6">
                   <AvatarImage
-                    alt={userProgress.userName}
+                    alt={userProgress.userName + " profile picture"}
                     className="object-cover"
                     src={userProgress.userImgSrc}
                   />
@@ -89,6 +94,7 @@ const LeaderBoardPage = async () => {
                       alt="Approval"
                       width={16}
                       height={16}
+                      aria-hidden
                     />
                   )}
                 </div>
@@ -113,7 +119,7 @@ const LeaderBoardPage = async () => {
 
         <Quests points={userProgress.points} />
       </StickyWrapper>
-    </main>
+    </div>
   );
 };
 export default LeaderBoardPage;

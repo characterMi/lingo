@@ -1,7 +1,7 @@
-import { FC } from "react";
-import Image from "next/image";
-import { InfinityIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { InfinityIcon } from "lucide-react";
+import Image from "next/image";
+import { FC } from "react";
 
 interface ResultCardProps {
   value: number | "active";
@@ -40,9 +40,13 @@ const ResultCard: FC<ResultCardProps> = ({ value, variant }) => {
           height={30}
           width={30}
           className="mr-1.5"
+          aria-hidden
         />
         {value === "active" ? (
-          <InfinityIcon className="h-6 w-6 stroke-[3] shrink-0" />
+          <InfinityIcon
+            className="h-6 w-6 stroke-[3] shrink-0"
+            aria-label="You have a subscription"
+          />
         ) : (
           value
         )}

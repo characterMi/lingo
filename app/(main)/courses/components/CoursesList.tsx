@@ -19,9 +19,7 @@ export const CoursesList = ({ activeCourseId, courses }: Props) => {
   const onClick = (id: number) => {
     if (pending) return;
 
-    if (id === activeCourseId) {
-      return router.push("learn");
-    }
+    if (id === activeCourseId) return router.push("learn");
 
     startTransition(() => {
       upsertUserProgress(id).catch(() =>

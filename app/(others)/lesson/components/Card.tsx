@@ -43,7 +43,7 @@ const Card: FC<CardProps> = ({
   useKey(shortcut, handleClick, {}, [handleClick]);
 
   return (
-    <div
+    <button
       onClick={handleClick}
       className={cn(
         "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 p-4 lg:p-6 cursor-pointer active:border-b-2",
@@ -62,7 +62,7 @@ const Card: FC<CardProps> = ({
 
       {imgSrc && (
         <div className="relative aspect-square mb-4 max-h-[80px] lg:max-h-[150px] w-full">
-          <Image src={imgSrc} alt={text} fill />
+          <Image src={imgSrc} alt={text + " option"} fill />
         </div>
       )}
 
@@ -72,7 +72,7 @@ const Card: FC<CardProps> = ({
           type === "ASSIST" && "flex-row-reverse"
         )}
       >
-        {type === "ASSIST" && <div />}
+        {type === "ASSIST" && <div aria-hidden />}
 
         <p
           className={cn(
@@ -96,11 +96,12 @@ const Card: FC<CardProps> = ({
               "border-green-300 text-green-500",
             selected && status === "wrong" && "border-rose-300 text-rose-500"
           )}
+          aria-label={`Use the ${shortcut} shortcut to choose this option`}
         >
           {shortcut}
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

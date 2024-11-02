@@ -19,10 +19,9 @@ export const Header: FC<HeaderProps> = ({
 
   return (
     <header className="lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 items-center justify-between max-w-[1140px] mx-auto w-full">
-      <X
-        onClick={open}
-        className="text-slate-500 hover:opacity-75 transition cursor-pointer"
-      />
+      <button onClick={open}>
+        <X className="text-slate-500 hover:opacity-75 transition cursor-pointer" />
+      </button>
 
       <Progress
         value={percentage}
@@ -34,11 +33,14 @@ export const Header: FC<HeaderProps> = ({
           src="/heart.svg"
           height={28}
           width={28}
-          alt="Heart"
+          alt="Hearts left"
           className="mr-2"
         />
         {hasActiveSubscription ? (
-          <InfinityIcon className="h-6 w-6 stroke-[3] shrink-0" />
+          <InfinityIcon
+            className="h-6 w-6 stroke-[3] shrink-0"
+            aria-label="You have subscription"
+          />
         ) : (
           hearts
         )}

@@ -1,6 +1,6 @@
+import { quests } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { quests } from "@/constants";
 import { Button } from "./ui/button";
 import { Progress } from "./ui/progress";
 
@@ -11,14 +11,19 @@ export const Quests = ({ points }: { points: number }) => {
         <h3 className="font-bold text-lg">Quests</h3>
 
         <Link href="/quests" className="block">
-          <Button variant="primaryOutline" className="w-full" size="lg">
+          <Button
+            variant="primaryOutline"
+            className="w-full"
+            size="lg"
+            tabIndex={-1}
+          >
             View all
           </Button>
         </Link>
       </div>
 
       <ul className="w-full space-y-4">
-        {quests.map((quest, i) => {
+        {quests.map((quest) => {
           const progress = (points / quest.value) * 100;
 
           return (
@@ -26,14 +31,24 @@ export const Quests = ({ points }: { points: number }) => {
               key={quest.title}
               className="flex items-center w-full gap-x-3 border-t-2 py-4"
             >
-              <Image src="/points.svg" alt="Points" height={40} width={40} />
+              <Image
+                src="/points.svg"
+                alt="Points"
+                aria-hidden
+                height={40}
+                width={40}
+              />
 
               <div className="flex flex-col gap-y-2 w-full">
                 <p className="text-neutral-700 text-sm font-bold">
                   {quest.title}
                 </p>
 
-                <Progress value={progress} className="h-2" />
+                <Progress
+                  value={progress}
+                  className="h-2"
+                  aria-label={`Your progress is ${progress}%`}
+                />
               </div>
             </li>
           );

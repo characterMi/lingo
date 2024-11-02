@@ -5,8 +5,8 @@ import TitleLoader from "@/components/loader/TitleLoader";
 
 const Loading = () => {
   return (
-    <div className="flex gap-12 px-6">
-      <FeedWrapper>
+    <div className="flex gap-12 px-6" aria-label="The page is loading...">
+      <FeedWrapper aria-hidden>
         <TitleLoader />
 
         <div className="flex flex-col gap-y-4 w-full mt-10">
@@ -22,7 +22,7 @@ const Loading = () => {
           ))}
         </div>
       </FeedWrapper>
-      <StickyWrapper>
+      <StickyWrapper aria-hidden>
         <StickyWrapperLoader />
       </StickyWrapper>
     </div>
