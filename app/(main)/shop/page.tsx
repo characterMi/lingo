@@ -44,9 +44,9 @@ const ShopPage = async () => {
             Shop
           </h1>
 
-          <p className="text-muted-foreground text-center text-lg mb-6">
+          <h2 className="text-muted-foreground text-center text-lg mb-6">
             Spend your points on cool stuff.
-          </p>
+          </h2>
 
           <Items
             hearts={userProgress.hearts}

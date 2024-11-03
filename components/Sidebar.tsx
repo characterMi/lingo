@@ -45,10 +45,11 @@ export const Sidebar = ({ className }: Props) => (
 
     <div className="py-4 px-2 flex justify-between items-center">
       <ClerkLoading>
-        <div
-          className="size-8 rounded-full skeleton"
-          aria-label="Your account setting is loading..."
-        />
+        <div className="size-8 rounded-full skeleton">
+          <p className="absolute opacity-0">
+            Your account setting is loading...
+          </p>
+        </div>
       </ClerkLoading>
 
       <ClerkLoaded>

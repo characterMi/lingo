@@ -5,7 +5,8 @@ import TitleLoader from "@/components/loader/TitleLoader";
 
 const Loading = () => {
   return (
-    <div className="flex gap-12 px-6" aria-label="The page is loading...">
+    <div className="flex gap-12 px-6">
+      <p className="absolute opacity-0">The page is loading...</p>
       <FeedWrapper aria-hidden>
         <TitleLoader />
 

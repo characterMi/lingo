@@ -12,10 +12,9 @@ export const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
     <MobileHeaderContainer>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger
-          aria-label="Menu toggle"
+          aria-label="Menu toggle button"
           aria-controls="sidebar"
           aria-expanded={isOpen}
-          id="menu-toggle"
         >
           <MenuIcon className="text-white" aria-hidden />
         </SheetTrigger>
@@ -24,8 +23,6 @@ export const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
           className="p-0 z-[100] shadow-2xl"
           side="left"
           id="sidebar"
-          aria-labelledby="menu-toggle"
-          role="menu"
           aria-hidden={!isOpen}
         >
           {children}

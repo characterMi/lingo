@@ -44,7 +44,7 @@ export const CourseCard = ({
 
     <Image
       src={imgSrc}
-      alt={title}
+      alt={title + " language"}
       width={93.33}
       height={70}
       className="rounded-lg drop-shadow-md border object-cover"

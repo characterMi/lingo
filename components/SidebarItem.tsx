@@ -25,9 +25,9 @@ export const SidebarItem = ({ href, iconSrc, label }: Props) => {
       className="justify-start h-[52px]"
       asChild
       onClick={close}
-      role="menuitem"
+      tabIndex={-1}
     >
-      <Link href={href}>
+      <Link href={href} aria-label={`Go to ${label} page`}>
         <Image
           src={iconSrc}
           alt={label}
@@ -35,6 +35,7 @@ export const SidebarItem = ({ href, iconSrc, label }: Props) => {
           width={52}
           height={52}
           priority
+          aria-hidden
         />
         {label}
       </Link>
