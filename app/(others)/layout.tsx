@@ -1,19 +1,7 @@
-import { ClerkProvider } from "@clerk/nextjs";
+import Root from "@/providers/root";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <ClerkProvider
-      appearance={{
-        variables: {
-          colorPrimary: "#16a34a",
-        },
-      }}
-    >
-      {children}
-    </ClerkProvider>
-  );
-}
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <Root>{children}</Root>
+);
+
+export default RootLayout;
