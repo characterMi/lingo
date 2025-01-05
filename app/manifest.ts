@@ -39,5 +39,47 @@ export default function manifest(): Manifest {
         type: "image/png",
       },
     ],
+    shortcuts: [
+      {
+        name: "Start a Lesson",
+        short_name: "Start a Lesson",
+        description: "Start a Lesson",
+        url: "/lesson",
+        icons: [
+          {
+            src: "/mascot-192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/mascot-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any",
+          },
+        ],
+      },
+      {
+        name: "Start a Course",
+        short_name: "Start a Course",
+        description: "Start a Course",
+        url: "/courses",
+        icons: [
+          {
+            src: "/mascot-192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/mascot-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any",
+          },
+        ],
+      },
+    ],
   };
 }
