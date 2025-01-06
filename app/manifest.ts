@@ -81,7 +81,7 @@ export default function manifest(): Manifest {
         url: "/lesson",
         icons: [
           {
-            src: "/course.png",
+            src: "/lesson.png",
             sizes: "192x192",
             type: "image/png",
           },
@@ -94,7 +94,7 @@ export default function manifest(): Manifest {
         url: "/courses",
         icons: [
           {
-            src: "/lesson.png",
+            src: "/course.png",
             sizes: "192x192",
             type: "image/png",
           },
