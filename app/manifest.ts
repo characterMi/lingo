@@ -27,16 +27,50 @@ export default function manifest(): Manifest {
     background_color: "#ffffff",
     screenshots: [
       {
-        src: "/lingo_first.png",
-        sizes: "800x500",
+        src: "/d1.png",
+        sizes: "1440x900",
         type: "image/png",
         // @ts-ignore
         form_factor: "wide",
       },
       {
-        src: "/lingo_responsive.png",
-        sizes: "381x831",
+        src: "/d2.png",
+        sizes: "1440x900",
         type: "image/png",
+        // @ts-ignore
+        form_factor: "wide",
+      },
+      {
+        src: "/d3.png",
+        sizes: "1440x900",
+        type: "image/png",
+        // @ts-ignore
+        form_factor: "wide",
+      },
+      {
+        src: "/1.jpg",
+        sizes: "1080x2262",
+        type: "image/jpg",
+      },
+      {
+        src: "/2.jpg",
+        sizes: "1080x2251",
+        type: "image/jpg",
+      },
+      {
+        src: "/3.jpg",
+        sizes: "1080x2250",
+        type: "image/jpg",
+      },
+      {
+        src: "/4.jpg",
+        sizes: "1080x2249",
+        type: "image/jpg",
+      },
+      {
+        src: "/5.jpg",
+        sizes: "1080x2260",
+        type: "image/jpg",
       },
     ],
     shortcuts: [
@@ -47,16 +81,9 @@ export default function manifest(): Manifest {
         url: "/lesson",
         icons: [
           {
-            src: "/mascot-192.png",
+            src: "/course.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any",
-          },
-          {
-            src: "/mascot-512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any",
           },
         ],
       },
@@ -67,16 +94,9 @@ export default function manifest(): Manifest {
         url: "/courses",
         icons: [
           {
-            src: "/mascot-192.png",
+            src: "/lesson.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any",
-          },
-          {
-            src: "/mascot-512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any",
           },
         ],
       },
