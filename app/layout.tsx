@@ -7,6 +7,7 @@ import ExitModal from "@/components/Modals/ExitModal";
 import HeartsModal from "@/components/Modals/HeartsModal";
 import PracticeModal from "@/components/Modals/PracticeModal";
 
+import Root from "@/providers/root";
 import "./globals.css";
 
 const font = Nunito({ subsets: ["latin"] });
@@ -36,14 +37,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={font.className}>
-        <Toaster />
-        <ExitModal />
-        <HeartsModal />
-        <PracticeModal />
-        {children}
-      </body>
-    </html>
+    <Root>
+      <html lang="en">
+        <body className={font.className}>
+          <Toaster />
+          <ExitModal />
+          <HeartsModal />
+          <PracticeModal />
+          {children}
+        </body>
+      </html>
+    </Root>
   );
 }

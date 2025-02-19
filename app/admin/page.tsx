@@ -1,6 +1,6 @@
-import { redirect } from "next/navigation";
-import dynamic from "next/dynamic";
 import { isAdmin } from "@/lib/admin";
+import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 
 const App = dynamic(() => import("./App"), { ssr: false });
 
@@ -9,8 +9,8 @@ export const metadata = {
   description: "Only admins can access this page.",
 };
 
-const AdminPage = () => {
-  if (!isAdmin()) {
+const AdminPage = async () => {
+  if (!(await isAdmin())) {
     redirect("/");
   }
 

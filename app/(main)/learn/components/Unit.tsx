@@ -29,7 +29,7 @@ export const Unit: FC<UnitsProps> = ({
   order,
   title,
 }) => {
-  // Background and borders.
+  // Background and border colors.
   const cycleLength = 6;
   const cycleIndex = order % cycleLength;
 
@@ -61,7 +61,7 @@ export const Unit: FC<UnitsProps> = ({
       <UnitBanner
         title={title}
         description={description}
-        isActiveUnit={activeLesson?.unitId === id}
+        isCurrentUnit={activeLesson?.unitId === id}
         background={background}
       />
 

@@ -7,14 +7,14 @@ import { NotebookText } from "lucide-react";
 interface UnitBannerProps {
   title: string;
   description: string;
-  isActiveUnit: boolean;
+  isCurrentUnit: boolean;
   background: string;
 }
 
 export const UnitBanner: FC<UnitBannerProps> = ({
   title,
   description,
-  isActiveUnit,
+  isCurrentUnit,
   background,
 }) => {
   return (
@@ -29,7 +29,7 @@ export const UnitBanner: FC<UnitBannerProps> = ({
         <p className="text-lg">{description}</p>
       </div>
 
-      {isActiveUnit && (
+      {isCurrentUnit && (
         <Link href="/lesson" aria-label="Start your lesson">
           <Button
             size="lg"

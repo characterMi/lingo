@@ -94,7 +94,7 @@ const QuestsPage = async () => {
 
           <SubscriptionButton
             className="w-full sm:w-max lg:w-full"
-            disabled={isTheLastQuestCompleted}
+            disabled={isTheLastQuestCompleted || hasActiveSubscription}
             isFree
             variant="super"
           >

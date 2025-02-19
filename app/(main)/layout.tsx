@@ -1,11 +1,10 @@
 import { MobileSidebar } from "@/components/MobileHeader";
 import { Sidebar } from "@/components/Sidebar";
-import Root from "@/providers/root";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Root>
+    <>
       <MobileSidebar>
         <Sidebar />
       </MobileSidebar>
@@ -18,7 +17,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         </section>
       </main>
 
-      <section className="fixed bottom-6 right-5 block lg:hidden">
+      <div className="fixed bottom-6 right-5 block lg:hidden">
         <ClerkLoading>
           <div className="size-8 rounded-full skeleton">
             <p className="absolute opacity-0">
@@ -30,8 +29,8 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <ClerkLoaded>
           <UserButton />
         </ClerkLoaded>
-      </section>
-    </Root>
+      </div>
+    </>
   );
 };
 export default MainLayout;
