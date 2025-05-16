@@ -12,39 +12,24 @@ const ActionButtons = () => {
       </ClerkLoading>
       <ClerkLoaded>
         <SignedIn>
-          <Link href="/learn" className="w-full">
-            <Button
-              className="w-full"
-              size="lg"
-              variant="secondary"
-              tabIndex={-1}
-            >
+          <Button className="w-full" size="lg" variant="secondary" asChild>
+            <Link href="/learn" className="w-full">
               Continue learning.
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </SignedIn>
 
         <SignedOut>
-          <Link href="/sign-up" className="w-full">
-            <Button
-              className="w-full"
-              size="lg"
-              variant="secondary"
-              tabIndex={-1}
-            >
+          <Button className="w-full" size="lg" variant="secondary" asChild>
+            <Link href="/sign-up" className="w-full">
               Get Started
-            </Button>
-          </Link>
-          <Link href="/sign-in" className="w-full">
-            <Button
-              className="w-full"
-              size="lg"
-              variant="primaryOutline"
-              tabIndex={-1}
-            >
+            </Link>
+          </Button>
+          <Button className="w-full" size="lg" variant="primaryOutline" asChild>
+            <Link href="/sign-in" className="w-full">
               I already have an account
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </SignedOut>
       </ClerkLoaded>
     </div>

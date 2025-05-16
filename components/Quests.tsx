@@ -10,16 +10,11 @@ export const Quests = ({ points }: { points: number }) => {
       <div className="flex items-center justify-between w-full space-y-2">
         <h3 className="font-bold text-lg">Quests</h3>
 
-        <Link href="/quests" className="block">
-          <Button
-            variant="primaryOutline"
-            className="w-full"
-            size="lg"
-            tabIndex={-1}
-          >
+        <Button variant="primaryOutline" size="lg" asChild>
+          <Link href="/quests" className="block">
             View all
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
 
       <ul className="w-full space-y-4">

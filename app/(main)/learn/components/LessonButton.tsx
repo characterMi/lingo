@@ -75,9 +75,9 @@ export const LessonButton: FC<LessonButtonProps> = ({
         marginTop: isFirst && !isCompleted ? 60 : 20,
       }}
       aria-label={
-        current
-          ? "Start your lesson"
-          : "Finish Your last lesson to unlock this one"
+        locked
+          ? "Finish Your last lesson to unlock this one"
+          : "Start your lesson"
       }
       tabIndex={!locked ? 0 : -1}
     >

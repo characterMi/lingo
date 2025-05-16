@@ -30,18 +30,19 @@ export const UnitBanner: FC<UnitBannerProps> = ({
       </div>
 
       {isCurrentUnit && (
-        <Link href="/lesson" aria-label="Start your lesson">
-          <Button
-            size="lg"
-            className="hidden xl:flex text-white"
-            style={{
-              background,
-            }}
-            aria-hidden
-          >
+        <Button
+          size="lg"
+          className="hidden xl:flex text-white"
+          style={{
+            background,
+          }}
+          asChild
+          aria-label="Continue where you left off"
+        >
+          <Link href="/lesson">
             <NotebookText className="mr-2" /> Continue
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       )}
     </div>
   );

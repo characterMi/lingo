@@ -21,8 +21,8 @@ export const UserProgress = ({
 }: Props) => {
   return (
     <section className="flex justify-between items-center gap-x-2 w-full">
-      <Link href="/courses" aria-label="Go to courses page">
-        <Button variant="defaultOutline" tabIndex={-1} aria-hidden>
+      <Button variant="defaultOutline" aria-label="Go to courses page" asChild>
+        <Link href="/courses">
           <Image
             src={activeCourse.imgSrc}
             alt={activeCourse.title}
@@ -30,16 +30,16 @@ export const UserProgress = ({
             width={32}
             height={32}
           />
-        </Button>
-      </Link>
+        </Link>
+      </Button>
 
-      <Link href="/shop" aria-label="Go to shop page">
-        <Button
-          className="text-orange-500"
-          variant="defaultOutline"
-          tabIndex={-1}
-          aria-hidden
-        >
+      <Button
+        className="text-orange-500"
+        variant="defaultOutline"
+        aria-label="Go to shop page"
+        asChild
+      >
+        <Link href="/shop">
           <Image
             src="/points.svg"
             alt="Points"
@@ -49,16 +49,16 @@ export const UserProgress = ({
           />
 
           {points}
-        </Button>
-      </Link>
+        </Link>
+      </Button>
 
-      <Link href="/shop" aria-label="Go to shop page">
-        <Button
-          className="text-orange-500"
-          variant="defaultOutline"
-          tabIndex={-1}
-          aria-hidden
-        >
+      <Button
+        className="text-orange-500"
+        variant="defaultOutline"
+        aria-label="Go to shop page"
+        asChild
+      >
+        <Link href="/shop">
           <Image
             src="/heart.svg"
             alt="Hearts"
@@ -72,8 +72,8 @@ export const UserProgress = ({
           ) : (
             hearts
           )}
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </section>
   );
 };

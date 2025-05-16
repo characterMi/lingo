@@ -43,11 +43,13 @@ const SubscriptionNote = () => {
           pay for Subscription. just simply use this{" "}
           <span className="text-md font-bold">4242-4242-4242-4242</span> card
           number and add a valid Expiration (for example: 06 / 30).
-          <X
-            className="absolute top-1 right-1 text-neutral-500 cursor-pointer"
+          <button
+            className="absolute top-1 right-1 text-neutral-500 cursor-pointer outline-none hover:text-neutral-700 focus-visible:text-neutral-800 transition-colors"
             onClick={handleClick}
             aria-label="Got it!"
-          />
+          >
+            <X aria-hidden />
+          </button>
         </div>
       )}
     </>

@@ -23,11 +23,11 @@ export const Promo = () => {
         <p className="text-muted-foreground">Get unlimited hearts and more</p>
       </div>
 
-      <Link href="/shop" className="block">
-        <Button variant="super" className="w-full" size="lg" tabIndex={-1}>
+      <Button variant="super" className="w-full" size="lg" asChild>
+        <Link href="/shop" className="block">
           Upgrade today
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </aside>
   );
 };

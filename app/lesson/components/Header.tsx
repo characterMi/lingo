@@ -19,8 +19,12 @@ export const Header: FC<HeaderProps> = ({
 
   return (
     <header className="lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 items-center justify-between max-w-[1140px] mx-auto w-full">
-      <button onClick={open}>
-        <X className="text-slate-500 hover:opacity-75 transition cursor-pointer" />
+      <button
+        onClick={open}
+        className="text-slate-500 hover:opacity-75 focus-visible:opacity-75 outline-none transition-opacity"
+        aria-label="Exit lesson"
+      >
+        <X />
       </button>
 
       <Progress

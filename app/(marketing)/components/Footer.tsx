@@ -13,6 +13,7 @@ const Footer = () => {
             key={flag.label}
             variant="defaultOutline"
             className="w-full snap-start"
+            tabIndex={-1}
           >
             <Image
               src={flag.src}
