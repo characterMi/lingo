@@ -101,5 +101,6 @@ export default function manifest(): Manifest {
         ],
       },
     ],
+    categories: ["language", "language learning", "lingo", "duolingo"],
   };
 }

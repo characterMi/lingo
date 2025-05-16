@@ -9,7 +9,7 @@ export default async function sitemap() {
     "/admin",
     "/lesson",
   ].map((route) => ({
-    url: `https://charactermi-lingo.vercel.app${route}`,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}${route}`,
     lastModified: new Date().toISOString(),
   }));
 
