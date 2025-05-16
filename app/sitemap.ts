@@ -8,8 +8,10 @@ export default async function sitemap() {
     "/shop",
     "/admin",
     "/lesson",
+    "/sign-in",
+    "/sign-up",
   ].map((route) => ({
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}${route}`,
+    url: `${process.env.NEXT_PUBLIC_APP_URL}${route}`,
     lastModified: new Date().toISOString(),
   }));
 

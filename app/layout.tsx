@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   keywords: ["language", "language learning", "lingo", "duolingo"],
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_BASE_URL,
+    canonical: process.env.NEXT_PUBLIC_APP_URL,
   },
   appleWebApp: {
     capable: true,
@@ -42,16 +42,16 @@ export const metadata: Metadata = {
   category: "Language Learning",
   classification: "Language Learning",
   creator: "Abolfazl taghadosi",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
   publisher: "Abolfazl taghadosi",
   openGraph: {
     title: APP_NAME,
     description: DESCRIPTION,
-    url: process.env.NEXT_PUBLIC_BASE_URL,
+    url: process.env.NEXT_PUBLIC_APP_URL,
     type: "website",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/mascot-512.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/mascot-512.png`,
         width: 512,
         height: 512,
         alt: "Website Logo",
@@ -63,10 +63,10 @@ export const metadata: Metadata = {
   twitter: {
     title: APP_NAME,
     description: DESCRIPTION,
-    site: process.env.NEXT_PUBLIC_BASE_URL,
+    site: process.env.NEXT_PUBLIC_APP_URL,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/mascot-512.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL}/mascot-512.png`,
         width: 512,
         height: 512,
         alt: "Website Logo",
