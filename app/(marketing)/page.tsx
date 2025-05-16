@@ -5,14 +5,7 @@ export default function Home() {
   return (
     <div className="max-w-[988px] mx-auto flex-1 flex flex-col lg:flex-row w-full items-center justify-center p-4 gap-2">
       <div className="relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0">
-        <Image
-          src="hero.svg"
-          priority
-          fill
-          alt=""
-          aria-labelledby="title"
-          loading="eager"
-        />
+        <Image src="hero.svg" priority fill alt="" loading="eager" />
       </div>
 
       <div className="flex flex-col items-center gap-y-8">

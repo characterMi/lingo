@@ -8,6 +8,8 @@ import HeartsModal from "@/components/Modals/HeartsModal";
 import PracticeModal from "@/components/Modals/PracticeModal";
 
 import Root from "@/providers/root";
+import { ClerkProvider } from "@clerk/nextjs";
+
 import "./globals.css";
 
 const font = Nunito({ subsets: ["latin"] });
@@ -38,15 +40,23 @@ export default function RootLayout({
 }>) {
   return (
     <Root>
-      <html lang="en">
-        <body className={font.className}>
-          <Toaster />
-          <ExitModal />
-          <HeartsModal />
-          <PracticeModal />
-          {children}
-        </body>
-      </html>
+      <ClerkProvider
+        appearance={{
+          variables: {
+            colorPrimary: "#16a34a",
+          },
+        }}
+      >
+        <html lang="en">
+          <body className={font.className}>
+            <Toaster />
+            <ExitModal />
+            <HeartsModal />
+            <PracticeModal />
+            {children}
+          </body>
+        </html>
+      </ClerkProvider>
     </Root>
   );
 }

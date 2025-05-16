@@ -26,12 +26,22 @@ const ActionButtons = () => {
 
         <SignedOut>
           <Link href="/sign-up" className="w-full">
-            <Button className="w-full" size="lg" variant="secondary">
+            <Button
+              className="w-full"
+              size="lg"
+              variant="secondary"
+              tabIndex={-1}
+            >
               Get Started
             </Button>
           </Link>
           <Link href="/sign-in" className="w-full">
-            <Button className="w-full" size="lg" variant="primaryOutline">
+            <Button
+              className="w-full"
+              size="lg"
+              variant="primaryOutline"
+              tabIndex={-1}
+            >
               I already have an account
             </Button>
           </Link>

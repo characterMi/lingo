@@ -54,22 +54,22 @@ export default function manifest(): Manifest {
       },
       {
         src: "/2.jpg",
-        sizes: "1080x2251",
+        sizes: "1080x2262",
         type: "image/jpg",
       },
       {
         src: "/3.jpg",
-        sizes: "1080x2250",
+        sizes: "1080x2262",
         type: "image/jpg",
       },
       {
         src: "/4.jpg",
-        sizes: "1080x2249",
+        sizes: "1080x2262",
         type: "image/jpg",
       },
       {
         src: "/5.jpg",
-        sizes: "1080x2260",
+        sizes: "1080x2262",
         type: "image/jpg",
       },
     ],
