@@ -1,5 +1,3 @@
-const VERSION = "1.0.0";
-
 const assets = [
   "/manifest.webmanifest",
   "/1.jpg",
@@ -70,7 +68,7 @@ const assets = [
   "/finish.mp3",
 ];
 
-const assetsCacheName = "lingo" + VERSION;
+const assetsCacheName = "lingo";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -86,14 +84,6 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
-      // Remove old caches (assets)
-      const keys = await caches.keys();
-      await Promise.allSettled(
-        keys
-          .filter((key) => key !== assetsCacheName)
-          .map((key) => caches.delete(key))
-      );
-
       // caching missing assets (like if the install event interrupted)
       const cache = await caches.open(assetsCacheName);
       const matches = await Promise.all(
