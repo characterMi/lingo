@@ -66,6 +66,7 @@ const assets = [
   "/jp_zombie.mp3",
   "/incorrect.mp3",
   "/finish.mp3",
+  "/og-poster.jpg",
 ];
 
 const assetsCacheName = "lingo";
