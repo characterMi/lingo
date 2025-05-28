@@ -46,9 +46,7 @@ export const Sidebar = async ({ className }: Props) => (
     <div className="py-4 px-2 flex justify-between items-center">
       <ClerkLoading>
         <div className="size-8 rounded-full skeleton">
-          <p className="absolute opacity-0">
-            Your account setting is loading...
-          </p>
+          <p className="sr-only">Your account setting is loading...</p>
         </div>
       </ClerkLoading>
 

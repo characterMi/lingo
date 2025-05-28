@@ -1,6 +1,6 @@
 const Loading = () => (
   <div className="h-full max-w-[912px] px-3 mx-auto">
-    <p className="absolute opacity-0">The page is loading...</p>
+    <p className="sr-only">The page is loading...</p>
     <div className="w-40 h-8 rounded-md skeleton" aria-hidden />
 
     <section

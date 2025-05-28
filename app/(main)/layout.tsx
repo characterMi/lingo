@@ -20,9 +20,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="fixed bottom-6 right-5 block lg:hidden">
         <ClerkLoading>
           <div className="size-8 rounded-full skeleton">
-            <p className="absolute opacity-0">
-              Your account setting is loading...
-            </p>
+            <p className="sr-only">Your account setting is loading...</p>
           </div>
         </ClerkLoading>
 

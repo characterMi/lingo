@@ -1,6 +1,6 @@
 const Loading = () => (
   <section className="flex flex-col h-full w-full">
-    <p className="absolute opacity-0">The page is loading...</p>
+    <p className="sr-only">The page is loading...</p>
     <div
       className="w-full h-16 flex items-center gap-x-7 max-w-[1140px] mx-auto lg:pt-[50px] pt-[20px] px-10"
       aria-hidden

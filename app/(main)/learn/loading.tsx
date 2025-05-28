@@ -5,7 +5,7 @@ import StickyWrapperLoader from "@/components/loader/StickyWrapperLoader";
 const Loading = () => {
   return (
     <div className="flex gap-12 px-6">
-      <p className="absolute opacity-0">The page is loading...</p>
+      <p className="sr-only">The page is loading...</p>
       <FeedWrapper aria-hidden>
         <div className="w-full h-24 flex justify-between items-center pb-4">
           <div />
