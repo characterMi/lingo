@@ -1,6 +1,7 @@
 const VERSION = "1.0.0";
 
 const assets = [
+  "/",
   "/offline.html",
   "/manifest.webmanifest",
   "/1.jpg",
@@ -73,7 +74,6 @@ const assets = [
 ];
 
 const assetsCacheName = "lingo" + VERSION;
-const staticPages = ["/", "/sign-in", "/sign-up"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -143,7 +143,7 @@ self.addEventListener("fetch", (event) => {
     event.request.mode === "navigate" ||
     event.request.headers.get("accept")?.includes("text/html")
   ) {
-    if (staticPages.includes(eventUrl.pathname)) {
+    if (eventUrl.pathname.startsWith("/")) {
       event.respondWith(
         cacheOnly(event.request, assetsCacheName, /*returnOffline= */ true)
       );
@@ -151,11 +151,7 @@ self.addEventListener("fetch", (event) => {
     }
 
     event.respondWith(
-      staleWhileRevalidate(
-        event.request,
-        assetsCacheName,
-        /*returnOffline= */ true
-      )
+      networkOnly(event.request, null, /*returnOffline= */ true)
     );
     return;
   }
@@ -189,7 +185,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   // other requests...
-  event.respondWith(staleWhileRevalidate(event.request, assetsCacheName));
+  event.respondWith(networkOnly(event.request));
 });
 
 async function cacheOnly(req, cacheName, returnOffline = false) {
@@ -214,7 +210,7 @@ async function staleWhileRevalidate(req, cacheName, returnOffline = false) {
 }
 
 async function networkOnly(req, cache = null, returnOffline = false) {
-  return fetch(req, { cache: "no-cache" })
+  return fetch(req)
     .then(async (networkRes) => {
       if (cache && networkRes.ok) await cache.put(req, networkRes.clone());
       return networkRes;

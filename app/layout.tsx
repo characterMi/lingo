@@ -98,6 +98,11 @@ export default function RootLayout({
             colorPrimary: "#16a34a",
           },
         }}
+        afterSignOutUrl={"/"}
+        signInForceRedirectUrl={"/learn"}
+        signUpForceRedirectUrl={"/learn"}
+        signInFallbackRedirectUrl={"/learn"}
+        signUpFallbackRedirectUrl={"/learn"}
       >
         <html lang="en">
           <body className={font.className}>
