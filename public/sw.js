@@ -188,9 +188,17 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(networkOnly(event.request));
 });
 
-async function cacheOnly(req, cacheName, returnOffline = false) {
+async function findCachedData(req, cacheName, returnOffline = false) {
+  // if the request was for a html page, we ignore search params...
+  const cacheProps = returnOffline ? { ignoreSearch: true } : undefined;
   const cache = await caches.open(cacheName);
-  const cachedResponse = await cache.match(req);
+  const cachedResponse = await cache.match(req, cacheProps);
+
+  return cachedResponse;
+}
+
+async function cacheOnly(req, cacheName, returnOffline = false) {
+  const cachedResponse = await findCachedData(req, cacheName, returnOffline);
 
   if (cachedResponse) {
     return cachedResponse.clone();
@@ -200,10 +208,7 @@ async function cacheOnly(req, cacheName, returnOffline = false) {
 }
 
 async function staleWhileRevalidate(req, cacheName, returnOffline = false) {
-  // if the request was for a html page, we ignore search params...
-  const cacheProps = returnOffline ? { ignoreSearch: true } : undefined;
-  const cache = await caches.open(cacheName);
-  const cachedResponse = await cache.match(req, cacheProps);
+  const cachedResponse = await findCachedData(req, cacheName, returnOffline);
   const fetchRes = await networkOnly(req, cache, returnOffline);
 
   return cachedResponse || fetchRes;
