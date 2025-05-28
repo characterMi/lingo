@@ -194,11 +194,15 @@ async function findCachedData(req, cacheName, returnOffline = false) {
   const cache = await caches.open(cacheName);
   const cachedResponse = await cache.match(req, cacheProps);
 
-  return cachedResponse;
+  return { cachedResponse, cache };
 }
 
 async function cacheOnly(req, cacheName, returnOffline = false) {
-  const cachedResponse = await findCachedData(req, cacheName, returnOffline);
+  const { cachedResponse, cache } = await findCachedData(
+    req,
+    cacheName,
+    returnOffline
+  );
 
   if (cachedResponse) {
     return cachedResponse.clone();
@@ -208,7 +212,11 @@ async function cacheOnly(req, cacheName, returnOffline = false) {
 }
 
 async function staleWhileRevalidate(req, cacheName, returnOffline = false) {
-  const cachedResponse = await findCachedData(req, cacheName, returnOffline);
+  const { cachedResponse, cache } = await findCachedData(
+    req,
+    cacheName,
+    returnOffline
+  );
   const fetchRes = await networkOnly(req, cache, returnOffline);
 
   return cachedResponse || fetchRes;
