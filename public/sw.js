@@ -143,7 +143,7 @@ self.addEventListener("fetch", (event) => {
     event.request.mode === "navigate" ||
     event.request.headers.get("accept")?.includes("text/html")
   ) {
-    if (eventUrl.pathname.startsWith("/")) {
+    if (eventUrl.pathname === "/") {
       event.respondWith(
         cacheOnly(event.request, assetsCacheName, /*returnOffline= */ true)
       );
