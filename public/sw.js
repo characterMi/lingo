@@ -2,7 +2,6 @@ const VERSION = "1.0.1";
 
 const assets = [
   "/",
-  "/offline.html",
   "/manifest.webmanifest",
   "/1.jpg",
   "/2.jpg",

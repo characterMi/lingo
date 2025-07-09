@@ -26,9 +26,6 @@ export const metadata: Metadata = {
     icon: "/mascot-192.png",
   },
   keywords: ["language", "language learning", "lingo", "duolingo"],
-  alternates: {
-    canonical: process.env.NEXT_PUBLIC_APP_URL,
-  },
   appleWebApp: {
     capable: true,
     startupImage: "/mascot-512.png",
