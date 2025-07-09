@@ -80,6 +80,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
   colorScheme: "only light",
   viewportFit: "cover",
+  userScalable: true,
 };
 
 export default function RootLayout({
