@@ -1,5 +1,10 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import ActionButtons from "./components/ActionButtons";
+
+const ActionButtons = dynamic(() => import("./components/ActionButtons"), {
+  ssr: false,
+  loading: () => <div className="w-full h-12 skeleton rounded-lg" />,
+});
 
 export default function Home() {
   return (
@@ -23,7 +28,9 @@ export default function Home() {
           Learn, Practice and master new languages with Lingo.
         </h2>
 
-        <ActionButtons />
+        <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
+          <ActionButtons />
+        </div>
       </div>
     </div>
   );
