@@ -1,4 +1,4 @@
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 
 const assets = [
   "/",
@@ -20,7 +20,7 @@ const assets = [
   "/fr.svg",
   "/girl.svg",
   "/heart.svg",
-  "/hero.svg",
+  "/hero.webp",
   "/hr.svg",
   "/it.svg",
   "/jp.svg",
