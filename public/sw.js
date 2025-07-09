@@ -227,7 +227,7 @@ async function networkOnly(req, cache = null, returnOffline = false) {
       if (cache && networkRes.ok) await cache.put(req, networkRes.clone());
       return networkRes;
     })
-    .catch(async () => {
+    .catch(() => {
       if (returnOffline) return offlineHTMLFallback();
       return responseFallback();
     });
