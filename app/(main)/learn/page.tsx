@@ -16,8 +16,8 @@ import { Navbar } from "./components/Navbar";
 import { Unit } from "./components/Unit";
 
 export const metadata = {
-  title: "Lingo | Learning page",
-  description: "Learn, Practice and master new languages with Lingo.",
+  title: "Lingo | Learn",
+  description: "Start your lesson, or practice previous ones.",
 };
 
 const LearnPage = async () => {

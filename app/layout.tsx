@@ -17,8 +17,7 @@ const Root = dynamic(() => import("@/providers/root"), { ssr: false });
 const font = Nunito({ subsets: ["latin"] });
 
 const APP_NAME = "Lingo";
-const DESCRIPTION =
-  "Lingo: Learn, Practice and master new languages with Lingo.";
+const DESCRIPTION = "Learn, Practice and master new languages with Lingo.";
 
 export const metadata: Metadata = {
   title: APP_NAME,

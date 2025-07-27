@@ -16,7 +16,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
-  title: "Lingo | Leaderboard page",
+  title: "Lingo | Leaderboard",
   description: "See where you stand among other learners in the community.",
 };
 

@@ -11,7 +11,7 @@ import { Progress } from "@/components/ui/progress";
 import { quests } from "@/constants";
 
 export const metadata = {
-  title: "Lingo | Quests page",
+  title: "Lingo | Quests",
   description: "Complete quests by earning points.",
 };
 
