@@ -103,6 +103,11 @@ export default function RootLayout({
         signUpFallbackRedirectUrl={"/learn"}
       >
         <html lang="en">
+          <head>
+            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="pinterest-rich-pin" content="true" />
+          </head>
           <body className={font.className}>
             <Toaster />
             <ExitModal />
