@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import { Nunito } from "next/font/google";
 
 import { Toaster } from "sonner";
@@ -7,10 +8,11 @@ import ExitModal from "@/components/Modals/ExitModal";
 import HeartsModal from "@/components/Modals/HeartsModal";
 import PracticeModal from "@/components/Modals/PracticeModal";
 
-import Root from "@/providers/root";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
+
+const Root = dynamic(() => import("@/providers/root"), { ssr: false });
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -89,34 +91,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Root>
-      <ClerkProvider
-        appearance={{
-          variables: {
-            colorPrimary: "#16a34a",
-          },
-        }}
-        afterSignOutUrl={"/"}
-        signInForceRedirectUrl={"/learn"}
-        signUpForceRedirectUrl={"/learn"}
-        signInFallbackRedirectUrl={"/learn"}
-        signUpFallbackRedirectUrl={"/learn"}
-      >
-        <html lang="en">
-          <head>
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="mobile-web-app-capable" content="yes" />
-            <meta name="pinterest-rich-pin" content="true" />
-          </head>
-          <body className={font.className}>
-            <Toaster />
-            <ExitModal />
-            <HeartsModal />
-            <PracticeModal />
-            {children}
-          </body>
-        </html>
-      </ClerkProvider>
-    </Root>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#16a34a",
+        },
+      }}
+      afterSignOutUrl={"/"}
+      signInForceRedirectUrl={"/learn"}
+      signUpForceRedirectUrl={"/learn"}
+      signInFallbackRedirectUrl={"/learn"}
+      signUpFallbackRedirectUrl={"/learn"}
+    >
+      <html lang="en">
+        <head>
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="pinterest-rich-pin" content="true" />
+        </head>
+        <body className={font.className}>
+          <Toaster />
+          <ExitModal />
+          <HeartsModal />
+          <PracticeModal />
+          <Root>{children}</Root>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

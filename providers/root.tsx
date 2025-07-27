@@ -1,35 +1,25 @@
 "use client";
 
-import { useEffect } from "react";
+import { addPWAEventListeners } from "@/lib/addPWAEventListeners";
+import { registerServiceworker } from "@/lib/registerServiceworker";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+
+const IS_PWA =
+  window.matchMedia("(display-mode: standalone)").matches ||
+  // @ts-ignore
+  window.navigator.standalone === true;
 
 const Root = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const pathname = usePathname();
+  const interval = useRef<NodeJS.Timeout>();
+
   useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("/sw.js")
-        .then(() => {
-          if (navigator.serviceWorker.controller) {
-            navigator.serviceWorker.controller.postMessage({
-              type: "CACHE-MISSING-ASSETS",
-            });
-          } else {
-            navigator.serviceWorker.ready.then(() => {
-              if (navigator.serviceWorker.controller) {
-                navigator.serviceWorker.controller.postMessage({
-                  type: "CACHE-MISSING-ASSETS",
-                });
-              }
-            });
-          }
-        })
-        .catch((error) => {
-          console.error("Service worker registration failed:", error);
-        });
-    }
+    registerServiceworker();
 
     const isPWA =
       window.matchMedia("(display-mode: standalone)").matches ||
@@ -38,24 +28,35 @@ const Root = ({
 
     if (!isPWA) return;
 
-    const preventContextMenu = (e: MouseEvent) => e.preventDefault();
-    const preventGesture = (e: Event) => e.preventDefault();
-    const preventWheelZoom = (e: WheelEvent) => {
-      if (e.ctrlKey || e.metaKey) e.preventDefault();
-    };
+    const removeListeners = addPWAEventListeners();
 
-    window.addEventListener("contextmenu", preventContextMenu);
-    document.addEventListener("gesturestart", preventGesture);
-    document.addEventListener("gesturechange", preventGesture);
-    window.addEventListener("wheel", preventWheelZoom, { passive: false });
-
-    return () => {
-      window.removeEventListener("contextmenu", preventContextMenu);
-      document.removeEventListener("gesturestart", preventGesture);
-      document.removeEventListener("gesturechange", preventGesture);
-      window.removeEventListener("wheel", preventWheelZoom);
-    };
+    return () => removeListeners();
   }, []);
+
+  useEffect(() => {
+    clearInterval(interval.current);
+
+    if (IS_PWA) {
+      interval.current = setInterval(() => {
+        const viewportMeta = document.querySelector<HTMLMetaElement>(
+          'meta[name="viewport"]'
+        );
+
+        if (viewportMeta) {
+          viewportMeta.setAttribute(
+            "content",
+            viewportMeta.content.replace(
+              "user-scalable=yes",
+              "user-scalable=no"
+            )
+          );
+          clearInterval(interval.current);
+        }
+      }, 10);
+    }
+
+    return () => clearInterval(interval.current);
+  }, [pathname]);
 
   return children;
 };
