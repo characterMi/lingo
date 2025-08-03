@@ -9,6 +9,11 @@ const MobileHeaderContainer = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
 
   useEffect(() => {
+    if (pathName !== "/learn") {
+      setBackgroundColor("bg-green-500");
+      return;
+    }
+
     const handlePageScroll = () => {
       const themeMeta = document.querySelector<HTMLMetaElement>(
         "meta[name=theme-color]"
@@ -79,7 +84,7 @@ const MobileHeaderContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <nav
       className={twMerge(
-        "lg:hidden px-6 h-12 transition flex items-center border-b fixed top-0 w-full z-50",
+        "lg:hidden px-6 h-12 transition duration-100 flex items-center border-b fixed top-0 w-full z-50",
         backgroundColor
       )}
     >
