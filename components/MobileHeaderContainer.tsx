@@ -84,9 +84,10 @@ const MobileHeaderContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <nav
       className={twMerge(
-        "lg:hidden px-6 h-12 transition duration-100 flex items-center border-b fixed top-0 w-full z-50",
+        "lg:hidden px-6 h-12 flex items-center border-b fixed top-0 w-full z-50",
         backgroundColor
       )}
+      style={{ transition: "background-color 50ms ease-in-out" }}
     >
       {children}
     </nav>
