@@ -1,8 +1,8 @@
 "use client";
 
 import { createStripeUrl } from "@/actions/userSubscription";
+import { onError } from "@/lib/onError";
 import { useTransition } from "react";
-import { toast } from "sonner";
 import { Button } from "./ui/button";
 
 type Props = {
@@ -32,7 +32,7 @@ const SubscriptionButton = ({
             window.location.href = res.data;
           }
         })
-        .catch(() => toast.error("Subscription failed !"));
+        .catch((e) => onError("Subscription failed !", e));
     });
   };
 

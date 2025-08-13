@@ -1,5 +1,4 @@
 import {
-  getAllSubscribedUser,
   getTopTenUsers,
   getUserProgress,
   getUserSubscription,
@@ -24,15 +23,12 @@ const LeaderBoardPage = async () => {
   const userProgressPromise = getUserProgress();
   const userSubscriptionPromise = getUserSubscription();
   const leaderboardPromise = getTopTenUsers();
-  const allSubscribedUserPromise = getAllSubscribedUser();
 
-  const [userProgress, userSubscription, leaderboard, allSubscribedUser] =
-    await Promise.all([
-      userProgressPromise,
-      userSubscriptionPromise,
-      leaderboardPromise,
-      allSubscribedUserPromise,
-    ]);
+  const [userProgress, userSubscription, leaderboard] = await Promise.all([
+    userProgressPromise,
+    userSubscriptionPromise,
+    leaderboardPromise,
+  ]);
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
@@ -59,52 +55,46 @@ const LeaderBoardPage = async () => {
 
           <Separator className="mb-4 h-0.5 rounded-full" aria-hidden />
 
-          {leaderboard.map((userProgress, i) => {
-            const subscribedUser = allSubscribedUser?.find(
-              (userId) => userId === userProgress.userId
-            );
-
-            return (
-              <div
-                key={userProgress.userId}
-                className="flex items-center w-full p-2 sm:px-4 rounded-xl hover:bg-gray-200/50"
+          {leaderboard.map((userProgress, i) => (
+            <div
+              key={userProgress.userId}
+              className="flex items-center w-full p-2 sm:px-4 rounded-xl hover:bg-gray-200/50"
+            >
+              <p
+                className="font-bold text-lime-700 mr-4 w-2"
+                aria-label="Player count"
               >
-                <p
-                  className="font-bold text-lime-700 mr-4 w-2"
-                  aria-label="Player count"
-                >
-                  {i + 1}
-                </p>
+                {i + 1}
+              </p>
 
-                <Avatar className="border bg-green-500 size-10 sm:size-12 ml-3 mr-4 sm:mr-6">
-                  <AvatarImage
-                    alt={userProgress.userName + " profile picture"}
-                    className="object-cover"
-                    src={userProgress.userImgSrc}
+              <Avatar className="border bg-green-500 size-10 sm:size-12 ml-3 mr-4 sm:mr-6">
+                <AvatarImage
+                  alt={userProgress.userName + " profile picture"}
+                  className="object-cover"
+                  src={userProgress.userImgSrc}
+                />
+              </Avatar>
+
+              <div className="flex-1 flex gap-x-1 items-center">
+                <p className="truncate font-bold text-neutral-800">
+                  {userProgress.userName}
+                </p>
+                {userProgress.isSubscribed && (
+                  <Image
+                    src="/blue-tick.png"
+                    alt="Approval"
+                    width={16}
+                    height={16}
+                    aria-hidden
                   />
-                </Avatar>
-
-                <div className="flex-1 flex gap-x-1 items-center">
-                  <p className="truncate font-bold text-neutral-800">
-                    {userProgress.userName}
-                  </p>
-                  {subscribedUser && (
-                    <Image
-                      src="/blue-tick.png"
-                      alt="Approval"
-                      width={16}
-                      height={16}
-                      aria-hidden
-                    />
-                  )}
-                </div>
-
-                <p className="text-muted-foreground text-sm min-[320px]:text-base">
-                  {userProgress.points} XP
-                </p>
+                )}
               </div>
-            );
-          })}
+
+              <p className="text-muted-foreground text-sm min-[320px]:text-base">
+                {userProgress.points} XP
+              </p>
+            </div>
+          ))}
         </div>
       </FeedWrapper>
       <StickyWrapper>

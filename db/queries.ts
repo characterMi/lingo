@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import { eq } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { cache } from "react";
 import db from "./drizzle";
 import {
@@ -243,21 +243,6 @@ export const getUserSubscription = cache(async () => {
   };
 });
 
-export const getAllSubscribedUser = cache(async () => {
-  const data = await db.query.userSubscription.findMany({
-    limit: 10,
-    columns: {
-      userId: true,
-    },
-  });
-
-  if (!data) return null;
-
-  const subscribedUser = data.map((user) => user.userId);
-
-  return subscribedUser;
-});
-
 export const getTopTenUsers = cache(async () => {
   const data = await db.query.userProgress.findMany({
     orderBy: (userProgress, { desc }) => [desc(userProgress.points)],
@@ -270,5 +255,27 @@ export const getTopTenUsers = cache(async () => {
     },
   });
 
-  return data;
+  const subscriptions = await db.query.userSubscription.findMany({
+    columns: {
+      userId: true,
+      stripeCurrentPeriodEnd: true,
+      stripePriceId: true,
+    },
+    where: inArray(
+      userSubscription.userId,
+      data.map((item) => item.userId)
+    ),
+  });
+
+  return data.map((user) => ({
+    ...user,
+    isSubscribed: subscriptions.find((subscribedUser) =>
+      Boolean(
+        subscribedUser.userId === user.userId &&
+          subscribedUser.stripePriceId &&
+          subscribedUser.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS >
+            Date.now()
+      )
+    ),
+  }));
 });

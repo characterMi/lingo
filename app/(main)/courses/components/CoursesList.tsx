@@ -2,9 +2,9 @@
 
 import { upsertUserProgress } from "@/actions/userProgress";
 import { courses, userProgress } from "@/db/schema";
+import { onError } from "@/lib/onError";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { toast } from "sonner";
 import { CourseCard } from "./CourseCard";
 
 type Props = {
@@ -22,9 +22,9 @@ export const CoursesList = ({ activeCourseId, courses }: Props) => {
     if (id === activeCourseId) return router.push("learn");
 
     startTransition(() => {
-      upsertUserProgress(id).catch(() =>
-        toast.error("Could not choose the language. something went wrong.")
-      );
+      upsertUserProgress(id).catch((err) => {
+        onError("Could not choose the language. something went wrong.", err);
+      });
     });
   };
 

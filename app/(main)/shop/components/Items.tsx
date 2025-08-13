@@ -3,6 +3,7 @@
 import { refillHearts } from "@/actions/userProgress";
 import { createStripeUrl } from "@/actions/userSubscription";
 import { Button } from "@/components/ui/button";
+import { onError } from "@/lib/onError";
 import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
@@ -24,7 +25,7 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
     startTransition(() => {
       refillHearts()
         .then(() => toast.success("Hearts successfully refilled !"))
-        .catch(() => toast.error("Something went wrong !"));
+        .catch((err) => onError("Something went wrong !", err));
     });
   };
 
@@ -36,7 +37,7 @@ const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
             window.location.href = res.data;
           }
         })
-        .catch(() => toast.error("Subscription failed !"));
+        .catch((err) => onError("Subscription failed !", err));
     });
   };
 

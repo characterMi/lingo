@@ -13,8 +13,7 @@ import { challengeOptions, challenges, userSubscription } from "@/db/schema";
 import { useHeartsModal } from "@/store/useHeartsModal";
 import { usePracticeModal } from "@/store/usePracticeModal";
 
-import { toast } from "sonner";
-
+import { onError } from "@/lib/onError";
 import { Challenge } from "./Challenge";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -143,7 +142,7 @@ export const Quiz: FC<QuizProps> = ({
               setHearts((prev) => Math.min(prev + 1, 5));
             }
           })
-          .catch(() => toast.error("Something went wrong, plz try again !"));
+          .catch((e) => onError("Something went wrong, please try again !", e));
       });
     } else {
       startTransition(() => {
@@ -163,8 +162,8 @@ export const Quiz: FC<QuizProps> = ({
               setHearts((prev) => Math.max(prev - 1, 0));
             }
           })
-          .catch(() => {
-            toast.error("Something went wrong. plz try again !");
+          .catch((e) => {
+            onError("Something went wrong, please try again !", e);
           });
       });
     }
