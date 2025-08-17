@@ -157,9 +157,17 @@ export const getLesson = cache(async (id?: number) => {
     return null;
   }
 
-  const courseProgress = await getCourseProgress();
+  const [courseProgress, units] = await Promise.all([
+    getCourseProgress(),
+    getUnits(),
+  ]);
 
-  const lessonId = id || courseProgress?.activeLessonId;
+  const firstLessonId = units[0]?.lessons[0].id;
+  const currentLessonId = courseProgress?.activeLessonId || 0;
+
+  if (id && (id > currentLessonId || id < firstLessonId)) return null;
+
+  const lessonId = id || currentLessonId;
 
   if (!lessonId) {
     return null;
